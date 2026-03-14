@@ -49,8 +49,10 @@
  */
 import AskPriestess from './pages/AskPriestess';
 import Bookings from './pages/Bookings';
+import Calendar from './pages/Calendar';
 import ChakraHub from './pages/ChakraHub';
 import Dashboard from './pages/Dashboard';
+import DreamInterpreter from './pages/DreamInterpreter';
 import FullMoonCircles from './pages/FullMoonCircles';
 import Home from './pages/Home';
 import IntentionBuilder from './pages/IntentionBuilder';
@@ -59,16 +61,16 @@ import LiveReading from './pages/LiveReading';
 import LunaCredits from './pages/LunaCredits';
 import ShadowJournal from './pages/ShadowJournal';
 import VioletAdmin from './pages/VioletAdmin';
-import Calendar from './pages/Calendar';
-import DreamInterpreter from './pages/DreamInterpreter';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "AskPriestess": AskPriestess,
     "Bookings": Bookings,
+    "Calendar": Calendar,
     "ChakraHub": ChakraHub,
     "Dashboard": Dashboard,
+    "DreamInterpreter": DreamInterpreter,
     "FullMoonCircles": FullMoonCircles,
     "Home": Home,
     "IntentionBuilder": IntentionBuilder,
@@ -77,8 +79,6 @@ export const PAGES = {
     "LunaCredits": LunaCredits,
     "ShadowJournal": ShadowJournal,
     "VioletAdmin": VioletAdmin,
-    "Calendar": Calendar,
-    "DreamInterpreter": DreamInterpreter,
 }
 
 export const pagesConfig = {

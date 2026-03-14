@@ -4,8 +4,8 @@ import { createPageUrl } from "@/utils";
 import { base44 } from "@/api/base44Client";
 import {
   Moon, BookOpen, Sparkles, Heart, Compass, Home,
-  Menu, X, LogOut, User, Star, Zap, Calendar as CalendarIcon } from
-"lucide-react";
+  Menu, X, LogOut, User, Star, Zap, Calendar as CalendarIcon
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -197,9 +197,42 @@ export default function Layout({ children, currentPageName }) {
       </nav>
 
       {/* Main content */}
-      <main className="pt-16 opacity-100 relative z-10">
+      <main className="pt-16 pb-20 lg:pb-0 opacity-100 relative z-10">
         {children}
       </main>
+
+      {/* Mobile Bottom Nav */}
+      {user &&
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 glass border-t border-[#7c3aed]/10" style={{ background: "#0a0118" }}>
+          <div className="flex items-center justify-around h-16 max-w-full">
+            {[
+            { name: "Home", page: "Home", icon: Home },
+            { name: "Learn", page: "Library", icon: BookOpen },
+            { name: "Journal", page: "ShadowJournal", icon: Heart },
+            { name: "Profile", page: "Dashboard", icon: User }].
+            map((item) => {
+              const Icon = item.icon;
+              const isActive = currentPageName === item.page;
+              return (
+                <Link
+                  key={item.page}
+                  to={createPageUrl(item.page)}
+                  className={`flex flex-col items-center gap-1 py-2 px-3 transition-all ${
+                  isActive ?
+                  "text-[#d4af37]" :
+                  "text-[#c4b5fd]/50 hover:text-[#c4b5fd]"}`}>
+
+                  <Icon className="w-5 h-5" />
+                  <span className="text-xs">{item.name}</span>
+                </Link>);
+
+            })}
+          </div>
+        </div>
+      }
+    </div>);
+
+}
 
       {/* Footer */}
       <footer className="relative z-10 mt-20 glass border-t border-[#7c3aed]/10">

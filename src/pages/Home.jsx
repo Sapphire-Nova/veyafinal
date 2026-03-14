@@ -40,10 +40,10 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="bg-zinc-500 relative">
 
       {/* ── HERO ── */}
-      <section className="min-h-screen flex items-center px-4 sm:px-8 py-20 relative overflow-hidden">
+      <section className="bg-zinc-500 px-4 py-20 min-h-screen flex items-center sm:px-8 relative overflow-hidden">
         {/* ambient glow */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20 pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%)" }} />
@@ -61,7 +61,7 @@ export default function Home() {
               Luna Bloom Tarot
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6"
-              style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif", color: "#f5f0ff" }}>
+            style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif", color: "#f5f0ff" }}>
               Reconnect with the Magic that Lives{" "}
               <span className="text-gradient-gold">Within You.</span>
             </h1>
@@ -124,7 +124,7 @@ export default function Home() {
       </section>
 
       {/* ── SACRED INVITATIONS ── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+      <section className="bg-zinc-500 mx-auto px-4 py-20 max-w-7xl sm:px-6">
         <SectionHeader
           title="Sacred Invitations"
           subtitle="Direct sessions with Violet — channeled, energy-driven, and uniquely crafted for your soul's journey."
@@ -163,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* ── MESSAGE FROM THE PRIESTESS ── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+      <section className="bg-zinc-500 mx-auto px-4 py-10 max-w-5xl sm:px-6">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -205,7 +205,7 @@ export default function Home() {
       </section>
 
       {/* ── SPIRITUAL TOOLBOX ── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+      <section className="bg-zinc-500 mx-auto px-4 py-20 max-w-7xl sm:px-6">
         <SectionHeader
           title="Your Spiritual Toolbox"
           subtitle="Self-guided practices to deepen your journey between sessions." />

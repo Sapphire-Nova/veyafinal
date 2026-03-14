@@ -4,9 +4,10 @@ import Stripe from 'npm:stripe@14.21.0';
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY"));
 
 const PACKS = {
-  starter: { priceId: "price_1TAjDrGYFqeHnmMadvxAoGDK", credits: 10 },
-  moon:    { priceId: "price_1TAjDrGYFqeHnmMaqadbhMDr", credits: 25 },
-  priestess: { priceId: "price_1TAjDrGYFqeHnmManRhY1JqW", credits: 60 },
+  spark:    { priceId: "price_1TAjMhH8iIiZGguVCYBnAWCu", credits: 59 },
+  glow:     { priceId: "price_1TAjMiH8iIiZGguV0oRFUzq0", credits: 109 },
+  moon:     { priceId: "price_1TAjMhH8iIiZGguV34JfWLw6", credits: 159 },
+  priestess:{ priceId: "price_1TAjMhH8iIiZGguVCZUGgYdM", credits: 209 },
 };
 
 Deno.serve(async (req) => {

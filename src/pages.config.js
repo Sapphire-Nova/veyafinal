@@ -48,31 +48,31 @@
  * The mainPage value must match a key in the PAGES object exactly.
  */
 import AskPriestess from './pages/AskPriestess';
+import Bookings from './pages/Bookings';
 import ChakraHub from './pages/ChakraHub';
 import Dashboard from './pages/Dashboard';
 import FullMoonCircles from './pages/FullMoonCircles';
 import Home from './pages/Home';
 import IntentionBuilder from './pages/IntentionBuilder';
 import Library from './pages/Library';
-import ShadowJournal from './pages/ShadowJournal';
-import Bookings from './pages/Bookings';
 import LiveReading from './pages/LiveReading';
 import LunaCredits from './pages/LunaCredits';
+import ShadowJournal from './pages/ShadowJournal';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "AskPriestess": AskPriestess,
+    "Bookings": Bookings,
     "ChakraHub": ChakraHub,
     "Dashboard": Dashboard,
     "FullMoonCircles": FullMoonCircles,
     "Home": Home,
     "IntentionBuilder": IntentionBuilder,
     "Library": Library,
-    "ShadowJournal": ShadowJournal,
-    "Bookings": Bookings,
     "LiveReading": LiveReading,
     "LunaCredits": LunaCredits,
+    "ShadowJournal": ShadowJournal,
 }
 
 export const pagesConfig = {

@@ -55,6 +55,7 @@ import Home from './pages/Home';
 import IntentionBuilder from './pages/IntentionBuilder';
 import Library from './pages/Library';
 import ShadowJournal from './pages/ShadowJournal';
+import Bookings from './pages/Bookings';
 import __Layout from './Layout.jsx';
 
 
@@ -67,6 +68,7 @@ export const PAGES = {
     "IntentionBuilder": IntentionBuilder,
     "Library": Library,
     "ShadowJournal": ShadowJournal,
+    "Bookings": Bookings,
 }
 
 export const pagesConfig = {

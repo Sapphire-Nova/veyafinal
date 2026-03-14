@@ -155,8 +155,6 @@ function CrystalCard({ crystal, delay = 0 }) {
 
 export default function Library() {
   const [search, setSearch] = useState("");
-  const crystalList = Object.values(crystals);
-
   const filteredHerbs = libraryHerbs.filter(
     (h) =>
       h.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -164,10 +162,11 @@ export default function Library() {
       h.element.toLowerCase().includes(search.toLowerCase())
   );
 
-  const filteredCrystals = crystalList.filter(
+  const filteredCrystals = libraryCrystals.filter(
     (c) =>
       c.name.toLowerCase().includes(search.toLowerCase()) ||
-      c.uses.toLowerCase().includes(search.toLowerCase())
+      c.spiritual.toLowerCase().includes(search.toLowerCase()) ||
+      c.chakra.toLowerCase().includes(search.toLowerCase())
   );
 
   return (

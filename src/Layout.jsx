@@ -230,9 +230,6 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </div>
       }
-    </div>);
-
-}
 
       {/* Footer */}
       <footer className="relative z-10 mt-20 glass border-t border-[#7c3aed]/10">

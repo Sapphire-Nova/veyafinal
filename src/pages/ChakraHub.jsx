@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import SectionHeader from "@/components/veya/SectionHeader";
 import ChakraCard from "@/components/veya/ChakraCard";
 import ChakraDetail from "@/components/veya/ChakraDetail";
+import ChakraImageDisplay from "@/components/veya/ChakraImageDisplay";
 import { chakras } from "@/components/veya/chakraData";
 
 export default function ChakraHub() {
@@ -31,28 +32,27 @@ export default function ChakraHub() {
                 {/* Spine line */}
                 <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#a855f7]/30 via-[#22c55e]/30 to-[#ef4444]/30" />
                 
-                <div className="space-y-4 relative z-10">
-                  {[...chakras].reverse().map((chakra, idx) =>
-                <button
-                  key={chakra.id}
-                  onClick={() => setSelectedChakra(chakra)}
-                  className="flex items-center gap-4 group">
+                <div className="space-y-4 relative z-10 w-full">
+                   {[...chakras].reverse().map((chakra, idx) =>
+                 <button
+                   key={chakra.id}
+                   onClick={() => setSelectedChakra(chakra)}
+                   className="flex items-center gap-4 group w-full hover:opacity-80 transition-opacity">
 
-                      <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-xl transition-transform group-hover:scale-125"
-                    style={{
-                      background: `${chakra.color}20`,
-                      boxShadow: `0 0 20px ${chakra.color}30`
-                    }}>
-
-                        {chakra.emoji}
-                      </div>
-                      <span className="text-xs text-[#c4b5fd]/40 group-hover:text-[#c4b5fd] transition-colors">
-                        {chakra.name}
-                      </span>
-                    </button>
-                )}
-                </div>
+                       <div className="w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden border border-[#d4af37]/20 hover:border-[#d4af37]/40 transition-all">
+                         <img
+                           src={chakra.image}
+                           alt={chakra.name}
+                           className="w-full h-full object-cover"
+                           onError={(e) => {e.target.style.display = 'none';}}
+                         />
+                       </div>
+                       <span className="text-xs text-[#c4b5fd]/60 group-hover:text-[#c4b5fd] transition-colors">
+                         {chakra.name}
+                       </span>
+                     </button>
+                 )}
+                 </div>
               </div>
             </div>
 

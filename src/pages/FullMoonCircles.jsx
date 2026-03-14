@@ -27,7 +27,7 @@ export default function FullMoonCircles() {
   const { data: rsvps = [] } = useQuery({
     queryKey: ["fullMoonRSVPs"],
     queryFn: () => base44.entities.FullMoonRSVP.list(),
-    enabled: !!user,
+    enabled: !!user
   });
 
   const rsvpMutation = useMutation({
@@ -36,7 +36,7 @@ export default function FullMoonCircles() {
       queryClient.invalidateQueries({ queryKey: ["fullMoonRSVPs"] });
       setSelectedEvent(null);
       setIntention("");
-    },
+    }
   });
 
   const handleRSVP = (event) => {
@@ -54,7 +54,7 @@ export default function FullMoonCircles() {
       user_email: user.email,
       user_name: user.full_name,
       intention,
-      status: "registered",
+      status: "registered"
     });
 
     // Send confirmation email
@@ -128,7 +128,7 @@ export default function FullMoonCircles() {
 
           <p style="text-align:center;color:#d4af37;font-size:14px;margin-top:24px;">With love and moonlight,<br/>— Violet, Luna Bloom Tarot 🌙</p>
         </div>
-      `,
+      `
     });
   };
 
@@ -136,40 +136,40 @@ export default function FullMoonCircles() {
   const userRSVPMoons = rsvps.map((r) => r.moon_name);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div className="bg-zinc-500 mx-auto px-4 py-12 max-w-7xl sm:px-6">
       <SectionHeader
         title="Full Moon Circles"
         subtitle="Sacred monthly gatherings held under the full moon. Meditate, set intentions, and connect with fellow seekers."
-        gold
-      />
+        gold />
+
 
       {/* Itinerary */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="glass-card p-6 md:p-8 mb-12 max-w-2xl mx-auto"
-      >
+        className="glass-card p-6 md:p-8 mb-12 max-w-2xl mx-auto">
+
         <h3
           className="text-lg text-gradient-gold mb-4 text-center"
-          style={{ fontFamily: "'Cinzel', serif" }}
-        >
+          style={{ fontFamily: "'Cinzel', serif" }}>
+
           Circle Itinerary
         </h3>
         <div className="space-y-3">
           {[
-            { time: "0:00", label: "Opening & Grounding", icon: "🕯️" },
-            { time: "0:02", label: "Guided Moon Meditation", duration: "10 min", icon: "🧘" },
-            { time: "0:12", label: "Community Social & Sharing", duration: "20 min", icon: "💜" },
-          ].map((item) => (
-            <div key={item.time} className="flex items-center gap-4 text-sm">
+          { time: "0:00", label: "Opening & Grounding", icon: "🕯️" },
+          { time: "0:02", label: "Guided Moon Meditation", duration: "10 min", icon: "🧘" },
+          { time: "0:12", label: "Community Social & Sharing", duration: "20 min", icon: "💜" }].
+          map((item) =>
+          <div key={item.time} className="flex items-center gap-4 text-sm">
               <span className="text-[#c4b5fd]/70 font-mono w-10">{item.time}</span>
               <span className="text-lg">{item.icon}</span>
               <span className="text-[#e2dcff]">{item.label}</span>
-              {item.duration && (
-                <span className="text-[#c4b5fd]/70 ml-auto">{item.duration}</span>
-              )}
+              {item.duration &&
+            <span className="text-[#c4b5fd]/70 ml-auto">{item.duration}</span>
+            }
             </div>
-          ))}
+          )}
         </div>
         <div className="mt-4 flex flex-col items-center gap-1 text-xs text-[#c4b5fd]/80">
           <div className="flex items-center gap-2">
@@ -188,16 +188,16 @@ export default function FullMoonCircles() {
 
       {/* Moon Calendar */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {fullMoonEvents2026.map((event, idx) => (
-          <MoonEventCard
-            key={event.date}
-            event={event}
-            onRSVP={handleRSVP}
-            isRegistered={userRSVPMoons.includes(event.name)}
-            isPast={event.date < today}
-            delay={idx * 0.05}
-          />
-        ))}
+        {fullMoonEvents2026.map((event, idx) =>
+        <MoonEventCard
+          key={event.date}
+          event={event}
+          onRSVP={handleRSVP}
+          isRegistered={userRSVPMoons.includes(event.name)}
+          isPast={event.date < today}
+          delay={idx * 0.05} />
+
+        )}
       </div>
 
       {/* RSVP Dialog */}
@@ -206,8 +206,8 @@ export default function FullMoonCircles() {
           <DialogHeader>
             <DialogTitle
               className="text-gradient-gold text-xl"
-              style={{ fontFamily: "'Cinzel', serif" }}
-            >
+              style={{ fontFamily: "'Cinzel', serif" }}>
+
               {selectedEvent?.emoji} {selectedEvent?.name} Circle
             </DialogTitle>
           </DialogHeader>
@@ -228,18 +228,18 @@ export default function FullMoonCircles() {
               placeholder="Set your intention for this circle... (optional)"
               value={intention}
               onChange={(e) => setIntention(e.target.value)}
-              className="bg-[#0a0118] border-[#7c3aed]/20 text-[#f5f0ff] placeholder:text-[#c4b5fd]/30 min-h-[80px]"
-            />
+              className="bg-[#0a0118] border-[#7c3aed]/20 text-[#f5f0ff] placeholder:text-[#c4b5fd]/30 min-h-[80px]" />
+
             <Button
               onClick={confirmRSVP}
               disabled={rsvpMutation.isPending}
-              className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white py-6 rounded-xl glow-violet"
-            >
+              className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white py-6 rounded-xl glow-violet">
+
               {rsvpMutation.isPending ? "Registering..." : "Confirm & Send Me Details ✨"}
             </Button>
           </div>
         </DialogContent>
       </Dialog>
-    </div>
-  );
+    </div>);
+
 }

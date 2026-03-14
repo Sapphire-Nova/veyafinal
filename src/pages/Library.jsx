@@ -12,6 +12,9 @@ import { libraryCrystals } from "@/components/veya/crystalData";
 import { chakras } from "@/components/veya/chakraData";
 import TarotGallery from "@/components/veya/TarotGallery";
 import TarotStudyView from "@/components/veya/TarotStudyView";
+import HerbModal from "@/components/veya/HerbModal";
+import CrystalModal from "@/components/veya/CrystalModal";
+import ChakraModal from "@/components/veya/ChakraModal";
 
 const elementColors = {
   Fire: "text-orange-400",
@@ -162,6 +165,9 @@ function CrystalCard({ crystal, delay = 0 }) {
 export default function Library() {
   const [search, setSearch] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedHerb, setSelectedHerb] = useState(null);
+  const [selectedCrystal, setSelectedCrystal] = useState(null);
+  const [selectedChakra, setSelectedChakra] = useState(null);
 
   const { data: tarotCards = [] } = useQuery({
     queryKey: ["tarotCards"],
@@ -233,25 +239,84 @@ export default function Library() {
         </TabsList>
 
         <TabsContent value="herbs">
-          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Stocked apothecary of sacred herbs</p>
-          <ApothecaryGrid items={filteredHerbs} type="herbs" />
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Stocked apothecary of sacred herbs — click to learn more</p>
+          <div className="grid grid-cols-1 gap-3">
+            {filteredHerbs.map((herb, idx) => (
+              <motion.button
+                key={herb.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.03 }}
+                onClick={() => setSelectedHerb(herb)}
+                className="glass-card text-left hover:border-[#d4af37]/30 transition-all p-4 rounded-2xl cursor-pointer group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-[#7c3aed]/15 bg-[#0a0118]/40">
+                    <img
+                      src={herb.image}
+                      alt={herb.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {e.target.style.display = 'none';}}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-[#f5f0ff] font-medium" style={{ fontFamily: "'Cinzel', serif" }}>
+                      {herb.name}
+                    </h3>
+                    <p className="text-xs text-[#c4b5fd]/60">{herb.uses}</p>
+                  </div>
+                  <span className="text-[#c4b5fd]/30 group-hover:text-[#d4af37] transition-colors">→</span>
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </TabsContent>
 
         <TabsContent value="crystals">
-          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Crystal treasury for spiritual healing</p>
-          <ApothecaryGrid items={filteredCrystals} type="crystals" />
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Crystal treasury for spiritual healing — click to learn more</p>
+          <div className="grid grid-cols-1 gap-3">
+            {filteredCrystals.map((crystal, idx) => (
+              <motion.button
+                key={crystal.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.03 }}
+                onClick={() => setSelectedCrystal(crystal)}
+                className="glass-card text-left hover:border-[#d4af37]/30 transition-all p-4 rounded-2xl cursor-pointer group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-[#7c3aed]/15 bg-[#0a0118]/40">
+                    <img
+                      src={crystal.image}
+                      alt={crystal.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {e.target.style.display = 'none';}}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-[#f5f0ff] font-medium" style={{ fontFamily: "'Cinzel', serif" }}>
+                      {crystal.name}
+                    </h3>
+                    <p className="text-xs text-[#c4b5fd]/60">{crystal.chakra} Chakra</p>
+                  </div>
+                  <span className="text-[#c4b5fd]/30 group-hover:text-[#d4af37] transition-colors">→</span>
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </TabsContent>
 
         <TabsContent value="chakras">
-          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Learn the seven sacred energy centers</p>
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Learn the seven sacred energy centers — click to explore</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {chakras.map((chakra, idx) => (
-              <motion.div
+              <motion.button
                 key={chakra.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
-                className="glass-card p-6 rounded-2xl border border-[#7c3aed]/20 hover:border-[#d4af37]/30 transition-all cursor-default"
+                onClick={() => setSelectedChakra(chakra)}
+                className="glass-card p-6 rounded-2xl border border-[#7c3aed]/20 hover:border-[#d4af37]/30 transition-all cursor-pointer"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-3xl">{chakra.emoji}</span>
@@ -264,7 +329,7 @@ export default function Library() {
                 </div>
                 <p className="text-xs text-[#c4b5fd]/70 mb-3">{chakra.location}</p>
                 <p className="text-sm text-[#d4af37]">✦ {chakra.affirmation}</p>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </TabsContent>
@@ -272,13 +337,24 @@ export default function Library() {
         <TabsContent value="tarot">
           <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Explore the Rider-Waite sacred cards</p>
           <TarotGallery cards={filteredTarot} onSelectCard={setSelectedCard} />
-          <AnimatePresence>
-            {selectedCard && (
-              <TarotStudyView card={selectedCard} onClose={() => setSelectedCard(null)} />
-            )}
-          </AnimatePresence>
         </TabsContent>
       </Tabs>
+
+      {/* Modals */}
+      <AnimatePresence>
+        {selectedHerb && (
+          <HerbModal herb={selectedHerb} onClose={() => setSelectedHerb(null)} />
+        )}
+        {selectedCrystal && (
+          <CrystalModal crystal={selectedCrystal} onClose={() => setSelectedCrystal(null)} />
+        )}
+        {selectedChakra && (
+          <ChakraModal chakra={selectedChakra} onClose={() => setSelectedChakra(null)} />
+        )}
+        {selectedCard && (
+          <TarotStudyView card={selectedCard} onClose={() => setSelectedCard(null)} />
+        )}
+      </AnimatePresence>
     </div>);
 
 }

@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { base44 } from "@/api/base44Client";
 import { useMutation } from "@tanstack/react-query";
 import TarotSymbols from "@/components/veya/TarotSymbols";
+import TarotCardImage from "@/components/veya/TarotCardImage";
 
 export default function TarotCardFlip({ card, onClose }) {
   const [isFlipped, setIsFlipped] = useState(false);

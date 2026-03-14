@@ -52,6 +52,9 @@ import FullMoonCircles from './pages/FullMoonCircles';
 import IntentionBuilder from './pages/IntentionBuilder';
 import ChakraHub from './pages/ChakraHub';
 import Library from './pages/Library';
+import ShadowJournal from './pages/ShadowJournal';
+import AskPriestess from './pages/AskPriestess';
+import Dashboard from './pages/Dashboard';
 import __Layout from './Layout.jsx';
 
 
@@ -61,6 +64,9 @@ export const PAGES = {
     "IntentionBuilder": IntentionBuilder,
     "ChakraHub": ChakraHub,
     "Library": Library,
+    "ShadowJournal": ShadowJournal,
+    "AskPriestess": AskPriestess,
+    "Dashboard": Dashboard,
 }
 
 export const pagesConfig = {

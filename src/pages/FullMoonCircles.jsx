@@ -11,7 +11,8 @@ import SectionHeader from "@/components/veya/SectionHeader";
 import MoonEventCard from "@/components/veya/MoonEventCard";
 import { fullMoonEvents2026 } from "@/components/veya/fullMoonData";
 
-const ZOOM_LINK = "https://zoom.us/j/your-meeting-id";
+const ZOOM_LINK = "https://us05web.zoom.us/j/6255544527?pwd=WI9vQswMimUFLxQBJTNbsqavg2mDBm.1";
+const ZOOM_PASSCODE = "MEDITATION";
 
 export default function FullMoonCircles() {
   const [user, setUser] = useState(null);

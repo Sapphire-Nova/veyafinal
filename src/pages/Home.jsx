@@ -73,7 +73,6 @@ export default function Home() {
                 <Button
                   className="px-8 py-6 rounded-xl text-base font-medium"
                   style={{ background: "#d4af37", color: "#0a0118" }}>
-
                   Book a Session with Violet
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>

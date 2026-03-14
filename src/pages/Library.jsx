@@ -205,21 +205,13 @@ export default function Library() {
         </TabsList>
 
         <TabsContent value="herbs">
-          <p className="text-center text-xs text-[#c4b5fd]/30 mb-6">Click any herb to reveal its magical properties & folklore</p>
-          <div className="space-y-3">
-            {filteredHerbs.map((herb, i) =>
-            <HerbCard key={herb.name} herb={herb} delay={i * 0.03} />
-            )}
-          </div>
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Stocked apothecary of sacred herbs</p>
+          <ApothecaryGrid items={filteredHerbs} type="herbs" />
         </TabsContent>
 
         <TabsContent value="crystals">
-          <p className="text-center text-xs text-[#c4b5fd]/30 mb-6">Click any crystal to reveal its spiritual benefits & folklore</p>
-          <div className="space-y-3">
-            {filteredCrystals.map((crystal, i) =>
-            <CrystalCard key={crystal.name} crystal={crystal} delay={i * 0.03} />
-            )}
-          </div>
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Crystal treasury for spiritual healing</p>
+          <ApothecaryGrid items={filteredCrystals} type="crystals" />
         </TabsContent>
       </Tabs>
     </div>);

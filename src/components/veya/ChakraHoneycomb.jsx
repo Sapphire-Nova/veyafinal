@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { chakras } from "./chakraData";
+import ChakraImageDisplay from "./ChakraImageDisplay";
 
 export default function ChakraHoneycomb({ onSelectChakra }) {
   return (
-    <div className="flex flex-wrap justify-center gap-6 items-center">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
       {chakras.map((chakra, idx) => (
         <motion.button
           key={chakra.id}
@@ -13,16 +14,14 @@ export default function ChakraHoneycomb({ onSelectChakra }) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: idx * 0.08 }}
-          whileHover={{ scale: 1.15 }}
+          whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
-          className="relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center text-4xl md:text-5xl transition-all"
-          style={{
-            background: `radial-gradient(circle, ${chakra.color}20, transparent)`,
-            boxShadow: `0 0 30px ${chakra.color}40, inset 0 0 20px ${chakra.color}15`,
-            border: `2px solid ${chakra.color}60`,
-          }}
+          className="text-left group"
         >
-          <span className="drop-shadow-lg">{chakra.emoji}</span>
+          <ChakraImageDisplay chakra={chakra} clickable />
+          <p className="text-xs text-[#c4b5fd] mt-2 text-center group-hover:text-[#d4af37] transition-colors font-medium">
+            {chakra.name}
+          </p>
         </motion.button>
       ))}
     </div>

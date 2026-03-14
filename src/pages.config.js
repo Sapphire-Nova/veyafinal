@@ -57,6 +57,7 @@ import Library from './pages/Library';
 import ShadowJournal from './pages/ShadowJournal';
 import Bookings from './pages/Bookings';
 import LiveReading from './pages/LiveReading';
+import LunaCredits from './pages/LunaCredits';
 import __Layout from './Layout.jsx';
 
 
@@ -71,6 +72,7 @@ export const PAGES = {
     "ShadowJournal": ShadowJournal,
     "Bookings": Bookings,
     "LiveReading": LiveReading,
+    "LunaCredits": LunaCredits,
 }
 
 export const pagesConfig = {

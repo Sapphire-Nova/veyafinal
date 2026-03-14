@@ -22,6 +22,10 @@ const navItems = [
   { name: "Luna Credits", page: "LunaCredits", icon: Zap },
 ];
 
+const adminNavItems = [
+  { name: "Go Live", page: "VioletAdmin", icon: Zap },
+];
+
 export default function Layout({ children, currentPageName }) {
   const [user, setUser] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

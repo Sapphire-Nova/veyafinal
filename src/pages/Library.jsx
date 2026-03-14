@@ -312,7 +312,7 @@ export default function Library() {
 
         <TabsContent value="chakras">
           <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Learn the seven sacred energy centers — click to explore</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {chakras.map((chakra, idx) => (
               <motion.button
                 key={chakra.name}
@@ -320,19 +320,17 @@ export default function Library() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
                 onClick={() => setSelectedChakra(chakra)}
-                className="glass-card p-6 rounded-2xl border border-[#7c3aed]/20 hover:border-[#d4af37]/30 transition-all cursor-pointer"
+                className="text-left hover:opacity-90 transition-all"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl">{chakra.emoji}</span>
-                  <div>
-                    <h3 className="text-[#f5f0ff] font-semibold" style={{ fontFamily: "'Cinzel', serif" }}>
-                      {chakra.name}
-                    </h3>
-                    <p className="text-xs text-[#c4b5fd]/60">{chakra.sanskrit}</p>
-                  </div>
+                <div className="mb-3">
+                  <TarotCardImage cardCode={null} cardName={null} />
                 </div>
-                <p className="text-xs text-[#c4b5fd]/70 mb-3">{chakra.location}</p>
-                <p className="text-sm text-[#d4af37]">✦ {chakra.affirmation}</p>
+                <h3 className="text-[#f5f0ff] font-semibold mb-1" style={{ fontFamily: "'Cinzel', serif" }}>
+                  {chakra.name}
+                </h3>
+                <p className="text-xs text-[#c4b5fd]/60 mb-2">{chakra.sanskrit}</p>
+                <p className="text-xs text-[#c4b5fd]/70 mb-2">{chakra.location}</p>
+                <p className="text-xs text-[#d4af37] italic">✦ {chakra.affirmation}</p>
               </motion.button>
             ))}
           </div>

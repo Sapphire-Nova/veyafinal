@@ -60,6 +60,7 @@ import LunaCredits from './pages/LunaCredits';
 import ShadowJournal from './pages/ShadowJournal';
 import VioletAdmin from './pages/VioletAdmin';
 import Calendar from './pages/Calendar';
+import DreamInterpreter from './pages/DreamInterpreter';
 import __Layout from './Layout.jsx';
 
 
@@ -77,6 +78,7 @@ export const PAGES = {
     "ShadowJournal": ShadowJournal,
     "VioletAdmin": VioletAdmin,
     "Calendar": Calendar,
+    "DreamInterpreter": DreamInterpreter,
 }
 
 export const pagesConfig = {

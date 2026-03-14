@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SectionHeader from "@/components/veya/SectionHeader";
 import { libraryHerbs } from "@/components/veya/herbData";
-import { crystals } from "@/components/veya/spellData";
+import { libraryCrystals } from "@/components/veya/crystalData";
 
 const elementColors = {
   Fire: "text-orange-400",

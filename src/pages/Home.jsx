@@ -60,14 +60,12 @@ export default function Home() {
             <p className="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-5" style={{ fontFamily: "'Cinzel', serif" }}>
               Luna Bloom Tarot
             </p>
-            <h1 className="text-zinc-950 mb-6 text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl"
-
-            style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif", color: "#f5f0ff" }}>
-
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6"
+              style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif", color: "#f5f0ff" }}>
               Reconnect with the Magic that Lives{" "}
-              <span className="text-zinc-800">Within You.</span>
+              <span className="text-gradient-gold">Within You.</span>
             </h1>
-            <p className="text-zinc-600 mb-10 text-base font-medium leading-relaxed md:text-lg max-w-xl">Violet, founder of Luna Bloom Tarot, welcomes you. Step through the veil for Tarot, Mediumship, Reiki, and Lightworker Blessing Rituals.
+            <p className="text-[#e2dcff] text-base md:text-lg leading-relaxed mb-10 max-w-xl">Violet, founder of Luna Bloom Tarot, welcomes you. Step through the veil for Tarot, Mediumship, Reiki, and Lightworker Blessing Rituals.
 
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

@@ -29,8 +29,8 @@ export const TAROT_BASE_URL = "https://raw.githubusercontent.com/Sapphire-Nova/v
 // Card filename mapping from card codes
 const CARD_FILENAME_MAP = {
   // MAJOR ARCANA (0-21)
-  ar00: "00-TheFool.jpg",
-  ar01: "01-TheMagician.jpg",
+  ar00: "00-The Fool.jpg",
+  ar01: "01-The Magician.jpg",
   ar02: "02-TheHighPriestess.jpg",
   ar03: "03-TheEmpress.jpg",
   ar04: "04-TheEmperor.jpg",

@@ -41,7 +41,7 @@ export default function Layout({ children, currentPageName }) {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: "var(--veya-void)" }}>
+    <div className="bg-zinc-500 min-h-screen" style={{ background: "var(--veya-void)" }}>
       {/* Stars background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {[...Array(50)].map((_, i) =>
@@ -203,7 +203,7 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Footer */}
       <footer className="relative z-10 mt-20 glass border-t border-[#7c3aed]/10">
-        <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6">
+        <div className="bg-zinc-400 mx-auto px-4 py-12 max-w-7xl sm:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
               <Moon className="w-5 h-5 text-[#d4af37]" />

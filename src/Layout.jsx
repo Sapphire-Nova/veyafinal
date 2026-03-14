@@ -20,6 +20,7 @@ const navItems = [
   { name: "Live Reading", page: "LiveReading", icon: Zap },
   { name: "Book a Session", page: "Bookings", icon: Moon },
   { name: "Luna Credits", page: "LunaCredits", icon: Zap },
+  { name: "My Calendar", page: "Calendar", icon: CalendarIcon },
 ];
 
 const adminNavItems = [

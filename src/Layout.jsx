@@ -148,7 +148,7 @@ export default function Layout({ children, currentPageName }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden glass border-t border-[#7c3aed]/10"
+              className="lg:hidden border-t border-[#7c3aed]/10" style={{ background: "#0a0118" }}
             >
               <div className="px-4 py-4 space-y-1">
                 {[...navItems, ...(user?.role === "admin" ? adminNavItems : [])].map((item) => {

@@ -23,8 +23,8 @@ export default function PageNotFound() {
   );
 }
 
-// Tarot Image Base URL - GitHub Wiki
-export const TAROT_BASE_URL = "https://raw.githubusercontent.com/Sapphire-Nova/veyafinal.wiki/master/tarotcards/";
+// Tarot Image Base URL - GitHub main repo
+export const TAROT_BASE_URL = "https://raw.githubusercontent.com/Sapphire-Nova/veyafinal/main/tarotcards/";
 
 // Card filename mapping from card codes
 const CARD_FILENAME_MAP = {

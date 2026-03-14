@@ -40,7 +40,7 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="bg-purple-300 text-gray-700 opacity-100 relative">
+    <div className="relative">
 
       {/* ── HERO ── */}
       <section className="min-h-screen flex items-center px-4 sm:px-8 py-20 relative overflow-hidden">

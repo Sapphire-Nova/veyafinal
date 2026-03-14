@@ -14,29 +14,35 @@
   --veya-ghost: #f5f0ff;
   --veya-indigo: #312e81;
 
-  /* Override shadcn CSS variables to match dark theme */
-  --background: 255 1% 7%;
-  --foreground: 270 100% 98%;
-  --card: 270 85% 7%;
-  --card-foreground: 270 100% 98%;
-  --popover: 270 85% 7%;
-  --popover-foreground: 270 100% 98%;
-  --primary: 270 100% 98%;
-  --primary-foreground: 270 85% 7%;
-  --secondary: 270 60% 20%;
-  --secondary-foreground: 270 100% 98%;
-  --muted: 270 60% 15%;
-  --muted-foreground: 270 50% 80%;
-  --accent: 270 60% 20%;
-  --accent-foreground: 270 100% 98%;
-  --border: 270 50% 20%;
-  --input: 270 50% 15%;
-  --ring: 270 50% 60%;
+  /* Force dark theme for entire app */
+  --background: #0a0118;
+  --foreground: #f5f0ff;
+  --card: rgba(26, 5, 51, 0.8);
+  --card-foreground: #f5f0ff;
+  --popover: #1a0533;
+  --popover-foreground: #f5f0ff;
+  --primary: #d4af37;
+  --primary-foreground: #0a0118;
+  --secondary: #7c3aed;
+  --secondary-foreground: #f5f0ff;
+  --muted: #2d1b69;
+  --muted-foreground: #c4b5fd;
+  --accent: #d4af37;
+  --accent-foreground: #0a0118;
+  --border: rgba(212, 175, 55, 0.2);
+  --input: rgba(26, 5, 51, 0.6);
+  --ring: #d4af37;
 }
 
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
+  }
+
+  html, body {
+    background-color: #0a0118 !important;
+    background: #0a0118 !important;
+    color: #f5f0ff !important;
   }
 
   html {
@@ -51,37 +57,51 @@
     min-height: 100vh;
   }
 
-  /* Force all text elements to ghost white by default */
-  p, span, li, td, th, label, div {
-    color: inherit;
+  /* Force all text elements to ghost white */
+  p, span, li, td, th, label, div, a {
+    color: #f5f0ff !important;
   }
 
-  /* All headings get gold */
+  a {
+    color: #c4b5fd !important;
+  }
+
+  a:hover {
+    color: #f5f0ff !important;
+  }
+
+  /* All headings force gold */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cinzel', serif;
-    color: #d4af37;
+    color: #d4af37 !important;
   }
 
   /* Inputs readable */
   input, textarea, select {
-    color: #f5f0ff;
-    background-color: rgba(26, 5, 51, 0.6);
+    color: #f5f0ff !important;
+    background-color: rgba(26, 5, 51, 0.6) !important;
+    border-color: rgba(212, 175, 55, 0.2) !important;
   }
 
   input::placeholder, textarea::placeholder {
-    color: rgba(196, 181, 253, 0.5);
+    color: rgba(196, 181, 253, 0.5) !important;
+  }
+
+  /* Icons */
+  svg {
+    color: #d4af37 !important;
   }
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0118;
+    background: #0a0118 !important;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2d1b69;
-    border-radius: 3px;
+    background: #2d1b69 !important;
+    border-radius: 4px;
   }
 
   /* Kill any white backgrounds from shadcn/radix */
@@ -95,21 +115,31 @@
     color: #f5f0ff !important;
     border-color: rgba(212, 175, 55, 0.2) !important;
   }
+
+  button {
+    background-color: rgba(124, 58, 237, 0.2) !important;
+    color: #f5f0ff !important;
+    border-color: rgba(212, 175, 55, 0.2) !important;
+  }
+
+  button:hover {
+    background-color: rgba(124, 58, 237, 0.4) !important;
+  }
 }
 
 @layer utilities {
   .glass {
-    background: rgba(26, 5, 51, 0.7) !important;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(212, 175, 55, 0.18) !important;
+    background: rgba(26, 5, 51, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid #d4af37 !important;
   }
 
   .glass-card {
-    background: rgba(26, 5, 51, 0.7) !important;
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(212, 175, 55, 0.18) !important;
+    background: rgba(26, 5, 51, 0.8) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid #d4af37 !important;
     border-radius: 1rem;
-    color: #f5f0ff;
+    color: #f5f0ff !important;
   }
 
   .glow-violet {
@@ -189,3 +219,32 @@
 /* Popover, Select, Dialog backgrounds */
 .bg-popover { background-color: #1a0533 !important; }
 .text-popover-foreground { color: #f5f0ff !important; }
+
+/* Force button styles */
+button, [role="button"], .btn {
+  background-color: rgba(212, 175, 55, 0.2) !important;
+  color: #f5f0ff !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+button:hover, [role="button"]:hover, .btn:hover {
+  background-color: rgba(212, 175, 55, 0.35) !important;
+}
+
+/* Primary button gold override */
+button[style*="background: #d4af37"], [style*="background: #d4af37"] {
+  background-color: #d4af37 !important;
+  color: #0a0118 !important;
+}
+
+/* Root container fix */
+#root, [data-theme], .app-container {
+  background-color: #0a0118 !important;
+  color: #f5f0ff !important;
+}
+
+/* Card and container overrides */
+.card, [role="region"], section, main, .container {
+  background-color: transparent;
+  color: #f5f0ff !important;
+}

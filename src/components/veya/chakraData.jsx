@@ -305,6 +305,7 @@ export const chakras = [
     element: "Cosmic Energy",
     frequency: "963 Hz",
     mantra: "Silence / AUM",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/1d4a4a80c_Gemini_Generated_Image_wimudtwimudtwimu.png",
     affirmation: "I am connected to the divine source of all creation.",
     balanced: "Spiritual connection, inner peace, sense of purpose, universal love, wisdom, enlightenment.",
     blocks: [

@@ -60,6 +60,7 @@ export const chakras = [
     element: "Water",
     frequency: "417 Hz",
     mantra: "VAM",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/3a76c9f80_Gemini_Generated_Image_tawzddtawzddtawz.png",
     affirmation: "I embrace pleasure, creativity, and the flow of life.",
     balanced: "Creative, passionate, emotionally healthy, comfortable with intimacy, joyful expression.",
     blocks: [

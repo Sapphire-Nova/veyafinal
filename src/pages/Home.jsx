@@ -8,6 +8,8 @@ import SectionHeader from "@/components/veya/SectionHeader";
 import DailyWisdom from "@/components/veya/DailyWisdom";
 import ChakraHoneycomb from "@/components/veya/ChakraHoneycomb";
 import LightworkerSpotlight from "@/components/veya/LightworkerSpotlight";
+import CelestialEnergyTracker from "@/components/veya/CelestialEnergyTracker";
+import DynamicAffirmation from "@/components/veya/DynamicAffirmation";
 
 const BOOKINGS_URL = createPageUrl("Bookings");
 
@@ -129,6 +131,18 @@ export default function Home() {
       {/* ── DAILY WISDOM ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <DailyWisdom />
+      </section>
+
+      {/* ── CELESTIAL ENERGY & AFFIRMATION ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-1">
+            <CelestialEnergyTracker />
+          </div>
+          <div className="lg:col-span-2">
+            <DynamicAffirmation />
+          </div>
+        </div>
       </section>
 
       {/* ── LIGHTWORKER SPOTLIGHT ── */}

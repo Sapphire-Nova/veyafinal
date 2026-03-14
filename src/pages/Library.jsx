@@ -11,7 +11,7 @@ import { libraryHerbs } from "@/components/veya/herbData";
 import { libraryCrystals } from "@/components/veya/crystalData";
 import { chakras } from "@/components/veya/chakraData";
 import TarotGallery from "@/components/veya/TarotGallery";
-import TarotStudyView from "@/components/veya/TarotStudyView";
+import TarotCardFlip from "@/components/veya/TarotCardFlip";
 import HerbModal from "@/components/veya/HerbModal";
 import CrystalModal from "@/components/veya/CrystalModal";
 import ChakraModal from "@/components/veya/ChakraModal";
@@ -352,7 +352,7 @@ export default function Library() {
           <ChakraModal chakra={selectedChakra} onClose={() => setSelectedChakra(null)} />
         )}
         {selectedCard && (
-          <TarotStudyView card={selectedCard} onClose={() => setSelectedCard(null)} />
+          <TarotCardFlip card={selectedCard} onClose={() => setSelectedCard(null)} />
         )}
       </AnimatePresence>
     </div>);

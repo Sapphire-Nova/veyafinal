@@ -5,7 +5,7 @@ import { Moon, Send, Sparkles, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import ReactMarkdown from "react-markdown";
-import MessageBubble from "@/components/veya/MessageBubble";
+import MessageBubble from "@/components/veya/MessageBubble.jsx";
 
 const AGENT_NAME = "dream_interpreter";
 

@@ -79,7 +79,8 @@ export default function Home() {
               </Link>
               <Link to={createPageUrl("FullMoonCircles")}>
                 <Button
-                  variant="outline" className="bg-background text-zinc-600 px-8 py-6 text-base font-medium rounded-xl inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border shadow-sm hover:text-accent-foreground h-9 border-[#7c3aed]/40 hover:bg-[#7c3aed]/10">
+                  variant="outline"
+                  className="border-[#7c3aed]/40 text-[#c4b5fd] hover:bg-[#7c3aed]/10 px-8 py-6 rounded-xl text-base">
 
 
                   <Moon className="w-5 h-5 mr-2" />

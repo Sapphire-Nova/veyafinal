@@ -3,6 +3,7 @@ import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import TarotCardImage from "@/components/veya/TarotCardImage";
 
 export default function CardOfTheDay() {
   const [dailyCard, setDailyCard] = useState(null);
@@ -42,13 +43,7 @@ export default function CardOfTheDay() {
       <div className="grid grid-cols-3 gap-4">
         {/* Card Image */}
         <div className="col-span-1">
-          <div className="aspect-[2/3] rounded-lg overflow-hidden border-2 border-[#d4af37]/30 bg-[#1a0533]">
-            <img
-              src={dailyCard.image_url}
-              alt={dailyCard.card_name}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <TarotCardImage cardCode={dailyCard.card_code} cardName={dailyCard.card_name} />
         </div>
 
         {/* Content */}

@@ -77,10 +77,10 @@ export default function LiveReading() {
     }
     setCreditBalance(creditRes.data?.balance ?? 0);
 
-    const history = messages
-      .slice(-8)
-      .map((m) => `${m.role === "user" ? "Seeker" : "Violet"}: ${m.content}`)
-      .join("\n");
+    const history = messages.
+    slice(-8).
+    map((m) => `${m.role === "user" ? "Seeker" : "Violet"}: ${m.content}`).
+    join("\n");
 
     const response = await base44.integrations.Core.InvokeLLM({
       prompt: `You are Violet, the mystical spiritual guide and High Priestess of Luna Bloom Tarot.
@@ -96,7 +96,7 @@ ${history}
 
 The seeker says: "${userMessage}"
 
-Respond as Violet in a live, present, intimate reading:`,
+Respond as Violet in a live, present, intimate reading:`
     });
 
     setMessages((prev) => [...prev, { role: "assistant", content: response }]);
@@ -108,20 +108,20 @@ Respond as Violet in a live, present, intimate reading:`,
   // ── OFFLINE STATE ──
   if (!isLive) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
+      <div className="bg-zinc-500 px-4 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
         <div className="fixed inset-0 pointer-events-none">
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-10"
-            style={{ background: "radial-gradient(circle, rgba(124,58,237,0.5) 0%, transparent 70%)" }} />
+          style={{ background: "radial-gradient(circle, rgba(124,58,237,0.5) 0%, transparent 70%)" }} />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center max-w-md relative z-10"
-        >
+          className="flex flex-col items-center text-center max-w-md relative z-10">
+
           {/* Offline badge */}
           <div className="flex items-center gap-2 px-4 py-2 rounded-full mb-10 border border-[#7c3aed]/30"
-            style={{ background: "rgba(124,58,237,0.08)" }}>
+          style={{ background: "rgba(124,58,237,0.08)" }}>
             <span className="w-2.5 h-2.5 rounded-full bg-[#c4b5fd]/40" />
             <span className="text-[#c4b5fd]/60 text-xs font-medium tracking-widest uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
               Violet is Not Live Right Now
@@ -134,14 +134,14 @@ Respond as Violet in a live, present, intimate reading:`,
               <img src={VIOLET_IMG} alt="Violet" className="w-full h-full object-cover object-top" />
             </div>
             <div className="absolute inset-0 rounded-full"
-              style={{ background: "radial-gradient(circle, rgba(10,1,24,0.5) 0%, transparent 70%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(10,1,24,0.5) 0%, transparent 70%)" }} />
           </div>
 
           <p className="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
             ✦ Live Reading · Unavailable
           </p>
           <h1 className="text-3xl md:text-4xl font-semibold text-[#f5f0ff] mb-4 leading-tight"
-            style={{ fontFamily: "'Cinzel', serif" }}>
+          style={{ fontFamily: "'Cinzel', serif" }}>
             Violet is resting<br />
             <span className="text-gradient-gold">between the veils.</span>
           </h1>
@@ -152,8 +152,8 @@ Respond as Violet in a live, present, intimate reading:`,
           <Link to={createPageUrl("Bookings")}>
             <Button
               className="px-10 py-6 rounded-2xl text-base font-semibold"
-              style={{ background: "linear-gradient(135deg, #d4af37, #f5e6a3, #d4af37)", color: "#0a0118", fontFamily: "'Cinzel', serif" }}
-            >
+              style={{ background: "linear-gradient(135deg, #d4af37, #f5e6a3, #d4af37)", color: "#0a0118", fontFamily: "'Cinzel', serif" }}>
+
               <Calendar className="w-5 h-5 mr-2" />
               Book a Private Session
             </Button>
@@ -162,8 +162,8 @@ Respond as Violet in a live, present, intimate reading:`,
             Private sessions available via Outlook booking
           </p>
         </motion.div>
-      </div>
-    );
+      </div>);
+
   }
 
   return (
@@ -171,30 +171,30 @@ Respond as Violet in a live, present, intimate reading:`,
       {/* Ambient glows */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-10"
-          style={{ background: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%)" }} />
         <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full opacity-10"
-          style={{ background: "radial-gradient(circle, rgba(124,58,237,0.6) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(124,58,237,0.6) 0%, transparent 70%)" }} />
       </div>
 
       <AnimatePresence mode="wait">
         {!connected ? (
-          /* ── PRE-CONNECT SCREEN ── */
-          <motion.div
-            key="pre"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center text-center max-w-lg w-full relative z-10"
-          >
+        /* ── PRE-CONNECT SCREEN ── */
+        <motion.div
+          key="pre"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center max-w-lg w-full relative z-10">
+
             {/* Live badge */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center gap-2 px-4 py-2 rounded-full mb-10 border border-emerald-400/30"
-              style={{ background: "rgba(16,185,129,0.08)" }}
-            >
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="flex items-center gap-2 px-4 py-2 rounded-full mb-10 border border-emerald-400/30"
+            style={{ background: "rgba(16,185,129,0.08)" }}>
+
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
@@ -207,26 +207,26 @@ Respond as Violet in a live, present, intimate reading:`,
             {/* Pulsating portrait */}
             <div className="relative mb-10 flex items-center justify-center">
               <motion.div className="absolute rounded-full border-2 border-[#d4af37]/40"
-                style={{ width: 300, height: 300 }}
-                animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0, 0.4] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} />
+            style={{ width: 300, height: 300 }}
+            animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0, 0.4] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} />
               <motion.div className="absolute rounded-full border border-[#d4af37]/25"
-                style={{ width: 320, height: 320 }}
-                animate={{ scale: [1, 1.18, 1], opacity: [0.3, 0, 0.3] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }} />
+            style={{ width: 320, height: 320 }}
+            animate={{ scale: [1, 1.18, 1], opacity: [0.3, 0, 0.3] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }} />
               <motion.div className="absolute rounded-full"
-                style={{ width: 270, height: 270, boxShadow: "0 0 0 3px rgba(212,175,55,0.9), 0 0 30px rgba(212,175,55,0.5)", borderRadius: "50%" }}
-                animate={{ boxShadow: [
-                  "0 0 0 3px rgba(212,175,55,0.9), 0 0 25px rgba(212,175,55,0.4)",
-                  "0 0 0 3px rgba(212,175,55,1), 0 0 45px rgba(212,175,55,0.7)",
-                  "0 0 0 3px rgba(212,175,55,0.9), 0 0 25px rgba(212,175,55,0.4)",
-                ]}}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} />
+            style={{ width: 270, height: 270, boxShadow: "0 0 0 3px rgba(212,175,55,0.9), 0 0 30px rgba(212,175,55,0.5)", borderRadius: "50%" }}
+            animate={{ boxShadow: [
+              "0 0 0 3px rgba(212,175,55,0.9), 0 0 25px rgba(212,175,55,0.4)",
+              "0 0 0 3px rgba(212,175,55,1), 0 0 45px rgba(212,175,55,0.7)",
+              "0 0 0 3px rgba(212,175,55,0.9), 0 0 25px rgba(212,175,55,0.4)"]
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} />
               <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-[#d4af37] relative z-10"
-                style={{ boxShadow: "inset 0 0 40px rgba(10,1,24,0.4)" }}>
+            style={{ boxShadow: "inset 0 0 40px rgba(10,1,24,0.4)" }}>
                 <img src={VIOLET_IMG} alt="Violet" className="w-full h-full object-cover object-top" />
                 <div className="absolute inset-0 rounded-full"
-                  style={{ background: "linear-gradient(to top, rgba(10,1,24,0.5) 0%, transparent 60%)" }} />
+              style={{ background: "linear-gradient(to top, rgba(10,1,24,0.5) 0%, transparent 60%)" }} />
               </div>
             </div>
 
@@ -235,7 +235,7 @@ Respond as Violet in a live, present, intimate reading:`,
                 ✦ Instant Reading · Live Session ✦
               </p>
               <h1 className="text-3xl md:text-4xl font-semibold text-[#f5f0ff] mb-4 leading-tight"
-                style={{ fontFamily: "'Cinzel', serif" }}>
+            style={{ fontFamily: "'Cinzel', serif" }}>
                 Violet is here<br />
                 <span className="text-gradient-gold">for you right now.</span>
               </h1>
@@ -248,31 +248,31 @@ Respond as Violet in a live, present, intimate reading:`,
 
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Button
-                  onClick={handleConnect}
-                  className="px-10 py-7 rounded-2xl text-base font-semibold"
-                  style={{
-                    background: "linear-gradient(135deg, #d4af37, #f5e6a3, #d4af37)",
-                    color: "#0a0118",
-                    fontFamily: "'Cinzel', serif",
-                    letterSpacing: "0.05em",
-                    boxShadow: "0 0 30px rgba(212,175,55,0.4)",
-                  }}
-                >
+                onClick={handleConnect}
+                className="px-10 py-7 rounded-2xl text-base font-semibold"
+                style={{
+                  background: "linear-gradient(135deg, #d4af37, #f5e6a3, #d4af37)",
+                  color: "#0a0118",
+                  fontFamily: "'Cinzel', serif",
+                  letterSpacing: "0.05em",
+                  boxShadow: "0 0 30px rgba(212,175,55,0.4)"
+                }}>
+
                   <Zap className="w-5 h-5 mr-2" />
                   Connect with Violet Now
                 </Button>
               </motion.div>
             </motion.div>
-          </motion.div>
-        ) : (
-          /* ── LIVE CHAT SCREEN ── */
-          <motion.div
-            key="chat"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="w-full max-w-2xl relative z-10 flex flex-col"
-          >
+          </motion.div>) : (
+
+        /* ── LIVE CHAT SCREEN ── */
+        <motion.div
+          key="chat"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="w-full max-w-2xl relative z-10 flex flex-col">
+
             {/* Chat header */}
             <div className="glass-card p-4 rounded-2xl mb-3 flex items-center gap-4">
               <div className="relative">
@@ -299,12 +299,12 @@ Respond as Violet in a live, present, intimate reading:`,
             </div>
 
             {/* Insufficient credits banner */}
-            {insufficientCredits && (
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-3 p-4 rounded-xl border border-[#d4af37]/40 bg-[#d4af37]/10 flex items-center justify-between gap-4"
-              >
+            {insufficientCredits &&
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-3 p-4 rounded-xl border border-[#d4af37]/40 bg-[#d4af37]/10 flex items-center justify-between gap-4">
+
                 <p className="text-[#f5f0ff] text-sm">
                   You need <strong className="text-[#d4af37]">{CREDIT_COST} Luna Credits</strong> to send a message. Your balance: <strong className="text-[#d4af37]">{creditBalance}</strong>
                 </p>
@@ -314,58 +314,58 @@ Respond as Violet in a live, present, intimate reading:`,
                   </Button>
                 </Link>
               </motion.div>
-            )}
+          }
 
             {/* Messages */}
             <div className="glass-card p-4 md:p-5 min-h-[420px] max-h-[520px] overflow-y-auto mb-3 rounded-2xl">
               <div className="space-y-4">
-                {messages.map((msg, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                  >
+                {messages.map((msg, i) =>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+
                     <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${
-                      msg.role === "user"
-                        ? "bg-[#7c3aed]/30 text-[#f5f0ff]"
-                        : "bg-[#1a0533]/60 border border-[#d4af37]/15 text-[#e2dcff]"
-                    }`}>
-                      {msg.role === "assistant" && (
-                        <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
+                msg.role === "user" ?
+                "bg-[#7c3aed]/30 text-[#f5f0ff]" :
+                "bg-[#1a0533]/60 border border-[#d4af37]/15 text-[#e2dcff]"}`
+                }>
+                      {msg.role === "assistant" &&
+                  <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
                           <Star className="w-3 h-3" /> Violet
                         </p>
-                      )}
-                      {msg.role === "user" ? (
-                        <p className="text-sm">{msg.content}</p>
-                      ) : (
-                        <ReactMarkdown className="text-sm prose prose-sm prose-invert max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+                  }
+                      {msg.role === "user" ?
+                  <p className="text-sm">{msg.content}</p> :
+
+                  <ReactMarkdown className="text-sm prose prose-sm prose-invert max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
                           {msg.content}
                         </ReactMarkdown>
-                      )}
+                  }
                     </div>
                   </motion.div>
-                ))}
+              )}
 
-                {loading && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
+                {loading &&
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
                     <div className="bg-[#1a0533]/60 border border-[#d4af37]/15 rounded-2xl px-4 py-3">
                       <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
                         <Star className="w-3 h-3" /> Violet is channeling...
                       </p>
                       <div className="flex gap-1">
-                        {[0, 1, 2].map((i) => (
-                          <motion.div
-                            key={i}
-                            animate={{ opacity: [0.3, 1, 0.3] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-                            className="w-2 h-2 rounded-full bg-[#d4af37]"
-                          />
-                        ))}
+                        {[0, 1, 2].map((i) =>
+                    <motion.div
+                      key={i}
+                      animate={{ opacity: [0.3, 1, 0.3] }}
+                      transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+                      className="w-2 h-2 rounded-full bg-[#d4af37]" />
+
+                    )}
                       </div>
                     </div>
                   </motion.div>
-                )}
+              }
                 <div ref={chatEndRef} />
               </div>
             </div>
@@ -373,32 +373,32 @@ Respond as Violet in a live, present, intimate reading:`,
             {/* Input */}
             <div className="flex gap-3">
               <Textarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                  }
-                }}
-                placeholder={`Ask Violet anything... (${CREDIT_COST} credits per message)`}
-                className="bg-[#1a0533]/40 border-[#7c3aed]/20 text-[#f5f0ff] placeholder:text-[#c4b5fd]/30 min-h-[52px] max-h-[120px] rounded-xl resize-none"
-              />
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              }}
+              placeholder={`Ask Violet anything... (${CREDIT_COST} credits per message)`}
+              className="bg-[#1a0533]/40 border-[#7c3aed]/20 text-[#f5f0ff] placeholder:text-[#c4b5fd]/30 min-h-[52px] max-h-[120px] rounded-xl resize-none" />
+
               <Button
-                onClick={sendMessage}
-                disabled={!input.trim() || loading}
-                className="rounded-xl px-4 self-end"
-                style={{ background: "#d4af37", color: "#0a0118" }}
-              >
+              onClick={sendMessage}
+              disabled={!input.trim() || loading}
+              className="rounded-xl px-4 self-end"
+              style={{ background: "#d4af37", color: "#0a0118" }}>
+
                 <Send className="w-4 h-4" />
               </Button>
             </div>
             <p className="text-center text-[#c4b5fd]/30 text-xs mt-2">
               {CREDIT_COST} Luna Credits will be deducted per message sent
             </p>
-          </motion.div>
-        )}
+          </motion.div>)
+        }
       </AnimatePresence>
-    </div>
-  );
+    </div>);
+
 }

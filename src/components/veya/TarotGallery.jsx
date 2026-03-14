@@ -21,7 +21,7 @@ export default function TarotGallery({ cards, onSelectCard }) {
           onClick={() => onSelectCard(card)}
           className="group relative overflow-hidden rounded-lg border border-[#7c3aed]/20 hover:border-[#d4af37]/50 transition-all"
         >
-          <div className="aspect-square bg-[#1a0533] overflow-hidden">
+          <div className="aspect-square bg-gradient-to-b from-[#2d1b69] to-[#1a0533] overflow-hidden flex items-center justify-center">
             {!failedImages[card.id] ? (
               <img
                 src={getCardImageUrl(card.card_code)}
@@ -30,8 +30,11 @@ export default function TarotGallery({ cards, onSelectCard }) {
                 onError={() => handleImageError(card.id)}
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-xs text-[#c4b5fd]/40">
-                {card.card_name}
+              <div className="text-center space-y-2">
+                <p className="text-[#d4af37] text-lg">✦</p>
+                <p className="text-[#c4b5fd] text-xs font-medium" style={{ fontFamily: "'Cinzel', serif" }}>
+                  {card.card_name}
+                </p>
               </div>
             )}
           </div>

@@ -1,58 +1,36 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Heart, AlertTriangle, TrendingUp, TrendingDown, Apple, Palette, Gem, Activity, Music } from "lucide-react";
+import { ArrowLeft, Gem, Leaf, Wind, Palette, AlertTriangle, TrendingUp, ZapOff, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-function DiagnosisTab({ chakra }) {
-  const [selectedState, setSelectedState] = useState("balanced");
-  const states = [
-    { key: "balanced", label: "Balanced", icon: Heart, description: chakra.balanced, color: "text-green-400" },
-    { key: "blocked", label: "Blocked", icon: AlertTriangle, description: chakra.blocked, color: "text-red-400" },
-    { key: "overactive", label: "Overactive", icon: TrendingUp, description: chakra.overactive, color: "text-orange-400" },
-    { key: "underactive", label: "Underactive", icon: TrendingDown, description: chakra.underactive, color: "text-blue-400" },
-  ];
-
+function HealingCard({ icon: Icon, label, text, color }) {
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-        {states.map((state) => {
-          const Icon = state.icon;
-          return (
-            <button
-              key={state.key}
-              onClick={() => setSelectedState(state.key)}
-              className={`p-3 rounded-xl border text-xs text-center transition-all ${
-                selectedState === state.key
-                  ? `${chakra.bgColor} ${chakra.borderColor}`
-                  : "bg-[#1a0533]/40 border-[#7c3aed]/10 hover:border-[#7c3aed]/20"
-              }`}
-            >
-              <Icon className={`w-4 h-4 mx-auto mb-1 ${state.color}`} />
-              {state.label}
-            </button>
-          );
-        })}
+    <div className="glass-card p-5 flex gap-4">
+      <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+        style={{ background: `${color}15` }}>
+        <Icon className="w-5 h-5" style={{ color }} />
       </div>
-      <div className="glass-card p-5">
-        <p className="text-sm text-[#c4b5fd]/70 leading-relaxed">
-          {states.find((s) => s.key === selectedState)?.description}
+      <div>
+        <p className="text-xs uppercase tracking-widest mb-1" style={{ color, fontFamily: "'Cinzel', serif" }}>
+          {label}
         </p>
+        <p className="text-sm text-[#c4b5fd]/70 leading-relaxed">{text}</p>
       </div>
     </div>
   );
 }
 
-function ListSection({ title, icon: Icon, items }) {
+function SymptomList({ title, icon: Icon, items, iconColor }) {
   return (
     <div className="glass-card p-5">
-      <h4 className="flex items-center gap-2 text-xs text-[#d4af37] uppercase tracking-widest mb-3">
+      <h4 className="flex items-center gap-2 text-xs uppercase tracking-widest mb-3" style={{ color: iconColor, fontFamily: "'Cinzel', serif" }}>
         <Icon className="w-4 h-4" /> {title}
       </h4>
       <ul className="space-y-2">
         {items.map((item, i) => (
-          <li key={i} className="text-sm text-[#c4b5fd]/60 flex items-start gap-2">
-            <span className="text-[#7c3aed]/60 mt-1">•</span>
+          <li key={i} className="text-sm text-[#c4b5fd]/70 flex items-start gap-2">
+            <span className="mt-1 flex-shrink-0" style={{ color: iconColor }}>▸</span>
             {item}
           </li>
         ))}
@@ -69,30 +47,46 @@ export default function ChakraDetail({ chakra, onBack }) {
       exit={{ opacity: 0, x: -20 }}
       className="space-y-6"
     >
-      {/* Header */}
-      <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          onClick={onBack}
-          className="text-[#c4b5fd]/60 hover:text-[#c4b5fd] hover:bg-white/5 p-2"
-        >
-          <ArrowLeft className="w-5 h-5" />
+      {/* Hero image (if available) */}
+      {chakra.image && (
+        <div className="relative w-full h-48 md:h-64 rounded-2xl overflow-hidden border border-[#d4af37]/10">
+          <img src={chakra.image} alt={chakra.name} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 rounded-2xl"
+            style={{ background: "linear-gradient(to top, rgba(10,1,24,0.85) 0%, rgba(10,1,24,0.2) 60%, transparent 100%)" }} />
+          <div className="absolute bottom-4 left-5">
+            <p className="text-xs text-[#d4af37] uppercase tracking-[0.25em]" style={{ fontFamily: "'Cinzel', serif" }}>
+              {chakra.sanskrit}
+            </p>
+            <h2 className="text-2xl text-[#f5f0ff]" style={{ fontFamily: "'Cinzel', serif" }}>
+              {chakra.name}
+            </h2>
+          </div>
+        </div>
+      )}
+
+      {/* Header (shown when no image) */}
+      {!chakra.image && (
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" onClick={onBack} className="text-[#c4b5fd]/60 hover:text-[#c4b5fd] hover:bg-white/5 p-2">
+            <ArrowLeft className="w-5 h-5" />
+          </Button>
+          <div className="w-14 h-14 rounded-full flex items-center justify-center text-3xl"
+            style={{ background: `${chakra.color}20`, boxShadow: `0 0 30px ${chakra.color}30` }}>
+            {chakra.emoji}
+          </div>
+          <div>
+            <h2 className="text-xl text-[#f5f0ff]" style={{ fontFamily: "'Cinzel', serif" }}>{chakra.name}</h2>
+            <p className="text-xs text-[#c4b5fd]/40">{chakra.sanskrit} · {chakra.element} · {chakra.location}</p>
+          </div>
+        </div>
+      )}
+
+      {/* Back button when image shown */}
+      {chakra.image && (
+        <Button variant="ghost" onClick={onBack} className="text-[#c4b5fd]/60 hover:text-[#c4b5fd] hover:bg-white/5 p-2 -mt-2">
+          <ArrowLeft className="w-5 h-5 mr-1" /> Back
         </Button>
-        <div
-          className="w-14 h-14 rounded-full flex items-center justify-center text-3xl"
-          style={{ background: `${chakra.color}20`, boxShadow: `0 0 30px ${chakra.color}30` }}
-        >
-          {chakra.emoji}
-        </div>
-        <div>
-          <h2 className="text-xl text-[#f5f0ff]" style={{ fontFamily: "'Cinzel', serif" }}>
-            {chakra.name}
-          </h2>
-          <p className="text-xs text-[#c4b5fd]/40">
-            {chakra.sanskrit} · {chakra.element} · {chakra.location}
-          </p>
-        </div>
-      </div>
+      )}
 
       {/* Affirmation */}
       <div className="glass-card p-5 text-center" style={{ borderColor: `${chakra.color}20` }}>
@@ -101,7 +95,7 @@ export default function ChakraDetail({ chakra, onBack }) {
         </p>
       </div>
 
-      {/* Quick Info */}
+      {/* Quick stats */}
       <div className="grid grid-cols-3 gap-3">
         <div className="glass-card p-4 text-center">
           <Music className="w-4 h-4 mx-auto mb-1 text-[#d4af37]" />
@@ -121,31 +115,64 @@ export default function ChakraDetail({ chakra, onBack }) {
       </div>
 
       {/* Tabs */}
-      <Tabs defaultValue="diagnosis" className="w-full">
-        <TabsList className="grid grid-cols-2 bg-[#1a0533]/60 rounded-xl">
-          <TabsTrigger
-            value="diagnosis"
-            className="text-xs data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg"
-          >
-            Diagnosis
+      <Tabs defaultValue="blocks" className="w-full">
+        <TabsList className="grid grid-cols-3 bg-[#1a0533]/60 rounded-xl">
+          <TabsTrigger value="blocks" className="text-xs data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg">
+            Blocks & Signs
           </TabsTrigger>
-          <TabsTrigger
-            value="healing"
-            className="text-xs data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg"
-          >
-            Healing Protocol
+          <TabsTrigger value="symptoms" className="text-xs data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg">
+            Symptoms
+          </TabsTrigger>
+          <TabsTrigger value="healing" className="text-xs data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg">
+            Balance
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="diagnosis" className="mt-4">
-          <DiagnosisTab chakra={chakra} />
+        {/* BLOCKS & WHAT CAUSES IT */}
+        <TabsContent value="blocks" className="mt-4 space-y-4">
+          <SymptomList
+            title="What Blocks This Chakra"
+            icon={AlertTriangle}
+            items={chakra.blocks || []}
+            iconColor="#f87171"
+          />
+          <div className="glass-card p-5">
+            <h4 className="text-xs uppercase tracking-widest text-[#d4af37] mb-2" style={{ fontFamily: "'Cinzel', serif" }}>
+              When Balanced
+            </h4>
+            <p className="text-sm text-[#c4b5fd]/70 leading-relaxed">{chakra.balanced}</p>
+          </div>
         </TabsContent>
 
-        <TabsContent value="healing" className="mt-4 space-y-4">
-          <ListSection title="Nourishing Foods" icon={Apple} items={chakra.foods} />
-          <ListSection title="Healing Colors" icon={Palette} items={chakra.colors} />
-          <ListSection title="Crystals" icon={Gem} items={chakra.crystals} />
-          <ListSection title="Yoga Poses" icon={Activity} items={chakra.yogaPoses} />
+        {/* SYMPTOMS */}
+        <TabsContent value="symptoms" className="mt-4 space-y-4">
+          <SymptomList
+            title="Stagnant / Underactive Signs"
+            icon={ZapOff}
+            items={chakra.stagnant_symptoms || []}
+            iconColor="#60a5fa"
+          />
+          <SymptomList
+            title="Overactive Signs"
+            icon={TrendingUp}
+            items={chakra.overactive_symptoms || []}
+            iconColor="#fb923c"
+          />
+        </TabsContent>
+
+        {/* HEALING TOOLKIT */}
+        <TabsContent value="healing" className="mt-4 space-y-3">
+          <p className="text-xs text-[#c4b5fd]/40 text-center italic mb-2">
+            Use these throughout your day to strengthen and balance this chakra
+          </p>
+          {chakra.healing && (
+            <>
+              <HealingCard icon={Gem} label="Crystal" text={chakra.healing.crystal} color={chakra.color} />
+              <HealingCard icon={Leaf} label="Herb" text={chakra.healing.herb} color={chakra.color} />
+              <HealingCard icon={Wind} label="Scent" text={chakra.healing.scent} color={chakra.color} />
+              <HealingCard icon={Palette} label="Color" text={chakra.healing.color} color={chakra.color} />
+            </>
+          )}
         </TabsContent>
       </Tabs>
     </motion.div>

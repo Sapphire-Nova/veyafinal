@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { base44 } from "@/api/base44Client";
+import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
-import { Leaf, Gem, Search, Zap, Wind, Droplets, Flame, Mountain } from "lucide-react";
+import { Leaf, Gem, Search, Zap, BookOpen, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SectionHeader from "@/components/veya/SectionHeader";
 import ApothecaryGrid from "@/components/veya/ApothecaryGrid";
 import { libraryHerbs } from "@/components/veya/herbData";
 import { libraryCrystals } from "@/components/veya/crystalData";
+import { chakras } from "@/components/veya/chakraData";
+import TarotGallery from "@/components/veya/TarotGallery";
+import TarotStudyView from "@/components/veya/TarotStudyView";
 
 const elementColors = {
   Fire: "text-orange-400",
@@ -156,6 +161,13 @@ function CrystalCard({ crystal, delay = 0 }) {
 
 export default function Library() {
   const [search, setSearch] = useState("");
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const { data: tarotCards = [] } = useQuery({
+    queryKey: ["tarotCards"],
+    queryFn: () => base44.entities.TarotCard.list("-updated_date", 100)
+  });
+
   const filteredHerbs = libraryHerbs.filter(
     (h) =>
     h.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -168,6 +180,10 @@ export default function Library() {
     c.name.toLowerCase().includes(search.toLowerCase()) ||
     c.spiritual.toLowerCase().includes(search.toLowerCase()) ||
     c.chakra.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const filteredTarot = tarotCards.filter((card) =>
+    card.card_name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -189,18 +205,30 @@ export default function Library() {
       </div>
 
       <Tabs defaultValue="herbs" className="w-full">
-        <TabsList className="grid grid-cols-2 bg-[#1a0533]/60 rounded-xl max-w-xs mx-auto mb-8">
+        <TabsList className="grid grid-cols-4 bg-[#1a0533]/60 rounded-xl max-w-2xl mx-auto mb-8">
           <TabsTrigger
             value="herbs"
             className="text-sm data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg gap-2">
 
-            <Leaf className="w-4 h-4" /> Herbs ({libraryHerbs.length})
+            <Leaf className="w-4 h-4" /> Herbs
           </TabsTrigger>
           <TabsTrigger
             value="crystals"
             className="text-sm data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg gap-2">
 
-            <Gem className="w-4 h-4" /> Crystals ({libraryCrystals.length})
+            <Gem className="w-4 h-4" /> Crystals
+          </TabsTrigger>
+          <TabsTrigger
+            value="chakras"
+            className="text-sm data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg gap-2">
+
+            <Zap className="w-4 h-4" /> Chakras
+          </TabsTrigger>
+          <TabsTrigger
+            value="tarot"
+            className="text-sm data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg gap-2">
+
+            <Sparkles className="w-4 h-4" /> Tarot
           </TabsTrigger>
         </TabsList>
 
@@ -212,6 +240,43 @@ export default function Library() {
         <TabsContent value="crystals">
           <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Crystal treasury for spiritual healing</p>
           <ApothecaryGrid items={filteredCrystals} type="crystals" />
+        </TabsContent>
+
+        <TabsContent value="chakras">
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Learn the seven sacred energy centers</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {chakras.map((chakra, idx) => (
+              <motion.div
+                key={chakra.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05 }}
+                className="glass-card p-6 rounded-2xl border border-[#7c3aed]/20 hover:border-[#d4af37]/30 transition-all cursor-default"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">{chakra.emoji}</span>
+                  <div>
+                    <h3 className="text-[#f5f0ff] font-semibold" style={{ fontFamily: "'Cinzel', serif" }}>
+                      {chakra.name}
+                    </h3>
+                    <p className="text-xs text-[#c4b5fd]/60">{chakra.sanskrit}</p>
+                  </div>
+                </div>
+                <p className="text-xs text-[#c4b5fd]/70 mb-3">{chakra.location}</p>
+                <p className="text-sm text-[#d4af37]">✦ {chakra.affirmation}</p>
+              </motion.div>
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="tarot">
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Explore the Rider-Waite sacred cards</p>
+          <TarotGallery cards={filteredTarot} onSelectCard={setSelectedCard} />
+          <AnimatePresence>
+            {selectedCard && (
+              <TarotStudyView card={selectedCard} onClose={() => setSelectedCard(null)} />
+            )}
+          </AnimatePresence>
         </TabsContent>
       </Tabs>
     </div>);

@@ -256,6 +256,7 @@ export const chakras = [
     element: "Light",
     frequency: "852 Hz",
     mantra: "OM",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/27b5905b5_Gemini_Generated_Image_u56sgou56sgou56s.png",
     affirmation: "I trust my intuition and see the truth beyond illusion.",
     balanced: "Strong intuition, vivid imagination, clear thinking, spiritual awareness, insightful dreams.",
     blocks: [

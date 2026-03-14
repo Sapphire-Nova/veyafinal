@@ -164,7 +164,7 @@ Respond as Violet in a live, present, intimate reading:`,
                 Violet is here<br />
                 <span className="text-gradient-gold">for you right now.</span>
               </h1>
-              <p className="text-[#c4b5fd]/60 text-sm md:text-base leading-relaxed mb-8 max-w-sm mx-auto">
+              <p className="text-[#e2dcff] text-sm md:text-base leading-relaxed mb-8 max-w-sm mx-auto">
                 Ask anything — tarot guidance, a message from the other side, chakra clarity, or a crystal prescription for your soul.
               </p>
 
@@ -187,7 +187,7 @@ Respond as Violet in a live, present, intimate reading:`,
                 </Button>
               </motion.div>
 
-              <p className="text-[#c4b5fd]/25 text-xs mt-4">
+              <p className="text-[#c4b5fd]/70 text-xs mt-4">
                 Free live guidance · Powered by Violet's sacred wisdom
               </p>
             </motion.div>
@@ -216,7 +216,7 @@ Respond as Violet in a live, present, intimate reading:`,
                   Live now · Instant replies
                 </p>
               </div>
-              <div className="ml-auto flex items-center gap-1 text-xs text-[#d4af37]/60">
+              <div className="ml-auto flex items-center gap-1 text-xs text-[#d4af37]">
                 <Star className="w-3 h-3" /> Luna Bloom Tarot
               </div>
             </div>
@@ -234,7 +234,7 @@ Respond as Violet in a live, present, intimate reading:`,
                     <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${
                       msg.role === "user"
                         ? "bg-[#7c3aed]/30 text-[#f5f0ff]"
-                        : "bg-[#1a0533]/60 border border-[#d4af37]/15 text-[#c4b5fd]/85"
+                        : "bg-[#1a0533]/60 border border-[#d4af37]/15 text-[#e2dcff]"
                     }`}>
                       {msg.role === "assistant" && (
                         <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">

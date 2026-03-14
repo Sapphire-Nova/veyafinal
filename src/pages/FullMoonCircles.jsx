@@ -162,16 +162,16 @@ export default function FullMoonCircles() {
             { time: "0:12", label: "Community Social & Sharing", duration: "20 min", icon: "💜" },
           ].map((item) => (
             <div key={item.time} className="flex items-center gap-4 text-sm">
-              <span className="text-[#c4b5fd]/30 font-mono w-10">{item.time}</span>
+              <span className="text-[#c4b5fd]/70 font-mono w-10">{item.time}</span>
               <span className="text-lg">{item.icon}</span>
-              <span className="text-[#c4b5fd]/80">{item.label}</span>
+              <span className="text-[#e2dcff]">{item.label}</span>
               {item.duration && (
-                <span className="text-[#c4b5fd]/30 ml-auto">{item.duration}</span>
+                <span className="text-[#c4b5fd]/70 ml-auto">{item.duration}</span>
               )}
             </div>
           ))}
         </div>
-        <div className="mt-4 flex flex-col items-center gap-1 text-xs text-[#c4b5fd]/30">
+        <div className="mt-4 flex flex-col items-center gap-1 text-xs text-[#c4b5fd]/80">
           <div className="flex items-center gap-2">
             <Video className="w-3 h-3" />
             <span>Via Zoom · Every Full Moon · 6:00 PM PT</span>
@@ -181,7 +181,7 @@ export default function FullMoonCircles() {
               Join Zoom
             </a>
             <span>·</span>
-            <span>Passcode: <span className="text-[#d4af37]/60 font-mono">{ZOOM_PASSCODE}</span></span>
+            <span>Passcode: <span className="text-[#d4af37] font-mono">{ZOOM_PASSCODE}</span></span>
           </div>
         </div>
       </motion.div>
@@ -213,8 +213,8 @@ export default function FullMoonCircles() {
           </DialogHeader>
           <div className="space-y-4 mt-4">
             <p className="text-xs text-[#d4af37] italic">{selectedEvent?.focus}</p>
-            <p className="text-sm text-[#c4b5fd]/60">{selectedEvent?.significance}</p>
-            <div className="flex gap-4 text-xs text-[#c4b5fd]/40">
+            <p className="text-sm text-[#d4c9ff]">{selectedEvent?.significance}</p>
+            <div className="flex gap-4 text-xs text-[#c4b5fd]">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3 h-3" />
                 {selectedEvent?.date && new Date(selectedEvent.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}

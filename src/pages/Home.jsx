@@ -57,7 +57,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: "easeOut" }}>
 
-            <p className="text-[#dbad14] mb-5 text-xs uppercase tracking-[0.3em]" style={{ fontFamily: "'Cinzel', serif" }}>
+            <p className="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-5" style={{ fontFamily: "'Cinzel', serif" }}>
               Luna Bloom Tarot
             </p>
             <h1 className="text-zinc-950 mb-6 text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl"

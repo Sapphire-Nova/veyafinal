@@ -10,6 +10,7 @@ import ChakraHoneycomb from "@/components/veya/ChakraHoneycomb";
 import LightworkerSpotlight from "@/components/veya/LightworkerSpotlight";
 import CelestialEnergyTracker from "@/components/veya/CelestialEnergyTracker";
 import DynamicAffirmation from "@/components/veya/DynamicAffirmation";
+import CardOfTheDay from "@/components/veya/CardOfTheDay";
 
 const BOOKINGS_URL = createPageUrl("Bookings");
 
@@ -143,6 +144,11 @@ export default function Home() {
             <DynamicAffirmation />
           </div>
         </div>
+      </section>
+
+      {/* ── CARD OF THE DAY ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <CardOfTheDay />
       </section>
 
       {/* ── LIGHTWORKER SPOTLIGHT ── */}

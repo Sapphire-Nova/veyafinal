@@ -17,6 +17,7 @@ const navItems = [
   { name: "Library", page: "Library", icon: BookOpen },
   { name: "Shadow Journal", page: "ShadowJournal", icon: Heart },
   { name: "Ask the Priestess", page: "AskPriestess", icon: Star },
+  { name: "Book a Session", page: "Bookings", icon: Moon },
 ];
 
 export default function Layout({ children, currentPageName }) {

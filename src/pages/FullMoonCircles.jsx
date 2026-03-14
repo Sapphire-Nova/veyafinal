@@ -57,29 +57,71 @@ export default function FullMoonCircles() {
     });
 
     // Send confirmation email
+    const eventDate = new Date(selectedEvent.date).toLocaleDateString("en-US", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
+
     await base44.integrations.Core.SendEmail({
       to: user.email,
-      subject: `🌕 You're Registered for the ${selectedEvent.name} Circle`,
+      subject: `🌕 You're In — ${selectedEvent.name}: ${selectedEvent.focus}`,
       body: `
-        <div style="background:#0a0118;color:#f5f0ff;padding:40px;font-family:Georgia,serif;">
-          <h1 style="color:#d4af37;text-align:center;">✨ Welcome to the ${selectedEvent.name} Circle ✨</h1>
-          <p style="text-align:center;color:#c4b5fd;">Dear ${user.full_name},</p>
-          <p style="color:#c4b5fd;">You have been registered for our sacred Full Moon gathering.</p>
-          <div style="background:rgba(124,58,237,0.15);padding:20px;border-radius:12px;margin:20px 0;">
-            <p><strong style="color:#d4af37;">Date:</strong> ${selectedEvent.date}</p>
-            <p><strong style="color:#d4af37;">Time:</strong> 6:00 PM Pacific Time</p>
-            <p><strong style="color:#d4af37;">Zodiac:</strong> ${selectedEvent.zodiac}</p>
-            <p><strong style="color:#d4af37;">Zoom Link:</strong> <a href="${ZOOM_LINK}" style="color:#7c3aed;">${ZOOM_LINK}</a></p>
+        <div style="background:#0a0118;color:#f5f0ff;padding:40px 32px;font-family:Georgia,serif;max-width:580px;margin:0 auto;">
+          <div style="text-align:center;margin-bottom:32px;">
+            <div style="font-size:48px;margin-bottom:12px;">${selectedEvent.emoji}</div>
+            <h1 style="color:#d4af37;font-size:26px;margin:0 0 6px;">${selectedEvent.name} Circle</h1>
+            <p style="color:#c4b5fd;font-size:14px;margin:0;font-style:italic;">${selectedEvent.focus}</p>
           </div>
-          <h3 style="color:#d4af37;">Circle Itinerary (30 min)</h3>
-          <ul style="color:#c4b5fd;">
-            <li>Opening & Grounding (3 min)</li>
-            <li>Guided Moon Meditation (12 min)</li>
-            <li>Intention Setting (5 min)</li>
-            <li>Community Sharing & Social (10 min)</li>
-          </ul>
-          <p style="color:#c4b5fd;font-style:italic;text-align:center;margin-top:30px;">"${selectedEvent.significance}"</p>
-          <p style="text-align:center;color:#d4af37;margin-top:20px;">— Violet, Luna Bloom Tarot</p>
+
+          <p style="color:#c4b5fd;font-size:15px;">Dear ${user.full_name},</p>
+          <p style="color:#c4b5fd;font-size:14px;line-height:1.7;">
+            Your seat in the sacred circle is confirmed. We can't wait to gather with you under the light of the ${selectedEvent.name}.
+          </p>
+
+          <div style="background:rgba(124,58,237,0.12);border:1px solid rgba(212,175,55,0.2);padding:20px 24px;border-radius:14px;margin:24px 0;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr>
+                <td style="color:#d4af37;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:6px 0;">📅 Date</td>
+                <td style="color:#f5f0ff;font-size:14px;padding:6px 0;">${eventDate}</td>
+              </tr>
+              <tr>
+                <td style="color:#d4af37;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:6px 0;">⏰ Time</td>
+                <td style="color:#f5f0ff;font-size:14px;padding:6px 0;">6:00 PM Pacific Time</td>
+              </tr>
+              <tr>
+                <td style="color:#d4af37;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:6px 0;">🔗 Zoom Link</td>
+                <td style="font-size:14px;padding:6px 0;"><a href="${ZOOM_LINK}" style="color:#7c3aed;">${ZOOM_LINK}</a></td>
+              </tr>
+            </table>
+          </div>
+
+          <h3 style="color:#d4af37;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">✨ Circle Itinerary</h3>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="color:#c4b5fd;opacity:0.5;font-size:12px;font-family:monospace;padding:6px 12px 6px 0;vertical-align:top;">0:00</td>
+              <td style="color:#c4b5fd;font-size:14px;padding:6px 0;">🕯️ Opening & Grounding</td>
+            </tr>
+            <tr>
+              <td style="color:#c4b5fd;opacity:0.5;font-size:12px;font-family:monospace;padding:6px 12px 6px 0;vertical-align:top;">0:02</td>
+              <td style="color:#c4b5fd;font-size:14px;padding:6px 0;">🧘 Guided Moon Meditation <span style="opacity:0.5;">(10 min)</span></td>
+            </tr>
+            <tr>
+              <td style="color:#c4b5fd;opacity:0.5;font-size:12px;font-family:monospace;padding:6px 12px 6px 0;vertical-align:top;">0:12</td>
+              <td style="color:#c4b5fd;font-size:14px;padding:6px 0;">💜 Community Social & Sharing <span style="opacity:0.5;">(20 min)</span></td>
+            </tr>
+          </table>
+
+          ${intention ? `
+          <div style="background:rgba(212,175,55,0.06);border-left:2px solid rgba(212,175,55,0.3);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:24px;">
+            <p style="color:#d4af37;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">Your Intention</p>
+            <p style="color:#c4b5fd;font-size:14px;font-style:italic;margin:0;">"${intention}"</p>
+          </div>
+          ` : ""}
+
+          <p style="color:#c4b5fd;font-size:13px;line-height:1.7;font-style:italic;text-align:center;margin:24px 0 8px;">
+            "${selectedEvent.significance}"
+          </p>
+
+          <p style="text-align:center;color:#d4af37;font-size:14px;margin-top:24px;">With love and moonlight,<br/>— Violet, Luna Bloom Tarot 🌙</p>
         </div>
       `,
     });

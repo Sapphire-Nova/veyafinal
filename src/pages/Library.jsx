@@ -86,15 +86,23 @@ function CrystalCard({ crystal, delay = 0 }) {
     >
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full glass-card p-5 text-left hover:border-[#7c3aed]/30 transition-all rounded-2xl"
+        className="w-full glass-card text-left hover:border-[#d4af37]/30 transition-all duration-300 overflow-hidden rounded-2xl"
       >
-        <div className="flex items-center gap-4">
-          <span className="text-3xl flex-shrink-0">{crystal.image}</span>
-          <div className="flex-1">
-            <h3 className="text-[#f5f0ff] font-medium" style={{ fontFamily: "'Cinzel', serif" }}>
+        <div className="flex items-center gap-4 p-5">
+          <div className="flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border border-[#7c3aed]/15 bg-[#0a0118]/40">
+            <img
+              src={crystal.image}
+              alt={crystal.name}
+              className="w-full h-full object-cover"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-[#f5f0ff] font-medium text-base" style={{ fontFamily: "'Cinzel', serif" }}>
               {crystal.name}
             </h3>
-            <p className="text-xs text-[#c4b5fd]/40 mt-0.5">{crystal.uses}</p>
+            <p className="text-xs text-[#c4b5fd]/40 mt-0.5">{crystal.chakra} Chakra</p>
+            <p className="text-xs text-blue-300 mt-1 font-medium">✦ {crystal.element}</p>
           </div>
           <span className="text-[#c4b5fd]/30 text-lg flex-shrink-0">{expanded ? "−" : "+"}</span>
         </div>
@@ -105,16 +113,36 @@ function CrystalCard({ crystal, delay = 0 }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="mt-4 pt-4 border-t border-[#7c3aed]/10"
+              className="px-5 pb-5"
             >
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <p className="text-xs text-[#d4af37] mb-1">Chakra</p>
-                  <p className="text-sm text-[#c4b5fd]/60">{crystal.chakra}</p>
+              <div className="border-t border-[#7c3aed]/10 pt-4 space-y-4">
+                <div className="flex gap-6 text-xs">
+                  <div>
+                    <p className="text-[#d4af37] uppercase tracking-widest mb-1">Chakra</p>
+                    <p className="text-[#c4b5fd]/60">{crystal.chakra}</p>
+                  </div>
+                  <div>
+                    <p className="text-[#d4af37] uppercase tracking-widest mb-1">Element</p>
+                    <p className="text-[#c4b5fd]/60">{crystal.element}</p>
+                  </div>
+                  {crystal.zodiac && (
+                    <div>
+                      <p className="text-[#d4af37] uppercase tracking-widest mb-1">Zodiac</p>
+                      <p className="text-[#c4b5fd]/60">{crystal.zodiac}</p>
+                    </div>
+                  )}
                 </div>
                 <div>
-                  <p className="text-xs text-[#d4af37] mb-1">Properties</p>
-                  <p className="text-sm text-[#c4b5fd]/60">{crystal.uses}</p>
+                  <p className="text-xs text-[#d4af37] uppercase tracking-widest mb-1.5">✨ Spiritual Benefits</p>
+                  <p className="text-sm text-[#c4b5fd]/70 leading-relaxed">{crystal.spiritual}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-[#d4af37] uppercase tracking-widest mb-1.5">🔮 Magical Uses</p>
+                  <p className="text-sm text-[#c4b5fd]/70 leading-relaxed">{crystal.magical}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-[#d4af37] uppercase tracking-widest mb-1.5">📖 Folklore & History</p>
+                  <p className="text-sm text-[#c4b5fd]/60 leading-relaxed italic">{crystal.folklore}</p>
                 </div>
               </div>
             </motion.div>

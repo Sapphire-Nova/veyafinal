@@ -6,7 +6,7 @@ import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/veya/SectionHeader";
 
-const BOOKINGS_URL = "https://outlook.office365.com/book/";
+const BOOKINGS_URL = createPageUrl("Bookings");
 
 const services = [
   {
@@ -71,7 +71,7 @@ export default function Home() {
               Violet, founder of Luna Bloom Tarot, welcomes you. Step through the veil for Tarot, Mediumship, Reiki, and Lightworker Blessing Rituals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href={BOOKINGS_URL} target="_blank" rel="noopener noreferrer">
+              <Link to={BOOKINGS_URL}>
                 <Button
                   className="px-8 py-6 rounded-xl text-base font-medium"
                   style={{ background: "#d4af37", color: "#0a0118" }}
@@ -79,7 +79,7 @@ export default function Home() {
                   Book a Session with Violet
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-              </a>
+              </Link>
               <Link to={createPageUrl("FullMoonCircles")}>
                 <Button
                   variant="outline"
@@ -155,10 +155,10 @@ export default function Home() {
                 </h3>
                 <p className="text-sm text-[#c4b5fd]/60 leading-relaxed">{svc.description}</p>
               </div>
-              <a href={BOOKINGS_URL} target="_blank" rel="noopener noreferrer"
+              <Link to={BOOKINGS_URL}
                 className="mt-auto inline-flex items-center gap-2 text-xs text-[#d4af37] hover:text-[#f5e6a3] transition-colors">
                 Book this session <ArrowRight className="w-3 h-3" />
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -256,7 +256,7 @@ export default function Home() {
           <p className="text-[#c4b5fd]/50 mb-8 text-sm">
             "You were never lost — you were simply waiting for the right guide to help you remember the magic that has always lived within you."
           </p>
-          <a href={BOOKINGS_URL} target="_blank" rel="noopener noreferrer">
+          <Link to={BOOKINGS_URL}>
             <Button
               className="px-10 py-6 rounded-xl text-base font-medium"
               style={{ background: "#d4af37", color: "#0a0118" }}
@@ -264,7 +264,7 @@ export default function Home() {
               Book a Session with Violet
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-          </a>
+          </Link>
         </motion.div>
       </section>
     </div>

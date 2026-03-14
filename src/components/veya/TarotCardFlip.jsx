@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { base44 } from "@/api/base44Client";
 import { useMutation } from "@tanstack/react-query";
+import TarotSymbols from "@/components/veya/TarotSymbols";
 
 export default function TarotCardFlip({ card, onClose }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -161,6 +162,9 @@ export default function TarotCardFlip({ card, onClose }) {
                 <p className="text-sm text-[#c4b5fd]/70 leading-relaxed">{card.reversed_meaning}</p>
               </div>
             </div>
+
+            {/* Key Symbols */}
+            <TarotSymbols symbols={card.key_symbols} />
 
             {/* Violet's Wisdom */}
             <div className="border-t border-[#7c3aed]/10 pt-4">

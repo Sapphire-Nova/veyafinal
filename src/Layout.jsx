@@ -4,7 +4,7 @@ import { createPageUrl } from "@/utils";
 import { base44 } from "@/api/base44Client";
 import {
   Moon, BookOpen, Sparkles, Heart, Compass, Home,
-  Menu, X, LogOut, User, Star
+  Menu, X, LogOut, User, Star, Zap
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";

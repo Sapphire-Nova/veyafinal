@@ -111,9 +111,8 @@ export default function FullMoonCircles() {
         <div className="space-y-3">
           {[
             { time: "0:00", label: "Opening & Grounding", icon: "🕯️" },
-            { time: "0:03", label: "Guided Moon Meditation", duration: "12 min", icon: "🧘" },
-            { time: "0:15", label: "Intention Setting Ceremony", duration: "5 min", icon: "✨" },
-            { time: "0:20", label: "Community Sharing & Social", duration: "10 min", icon: "💜" },
+            { time: "0:02", label: "Guided Moon Meditation", duration: "10 min", icon: "🧘" },
+            { time: "0:12", label: "Community Social & Sharing", duration: "20 min", icon: "💜" },
           ].map((item) => (
             <div key={item.time} className="flex items-center gap-4 text-sm">
               <span className="text-[#c4b5fd]/30 font-mono w-10">{item.time}</span>

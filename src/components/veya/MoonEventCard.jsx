@@ -32,7 +32,7 @@ export default function MoonEventCard({ event, onRSVP, isRegistered, isPast, del
               {event.name}
             </h3>
             <p className="text-xs text-[#d4af37]" style={{ fontFamily: "'Cinzel', serif" }}>
-              {event.zodiac}
+              {event.focus}
             </p>
           </div>
           {isRegistered && (

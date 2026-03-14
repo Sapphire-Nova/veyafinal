@@ -146,13 +146,13 @@ export default function Home() {
             }
               <span className="text-4xl">{svc.emoji}</span>
               <div>
-                <h3 className="text-[#080410] mb-2 text-lg font-semibold"
+                <h3 className="text-[#f5f0ff] text-lg font-semibold mb-2"
               style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
                   {svc.title}
                 </h3>
-                <p className="text-zinc-600 text-sm leading-relaxed">{svc.description}</p>
+                <p className="text-[#d4c9ff] text-sm leading-relaxed">{svc.description}</p>
               </div>
-              <Link to={BOOKINGS_URL} className="bg-zinc-700 text-[#d4af37] mt-auto text-xs text-center opacity-90 rounded-[32px] inline-flex items-center gap-2 hover:text-[#f5e6a3] transition-colors">
+              <Link to={BOOKINGS_URL} className="mt-auto inline-flex items-center gap-2 text-xs text-[#d4af37] hover:text-[#f5e6a3] transition-colors">
 
                 Book this session <ArrowRight className="w-3 h-3" />
               </Link>

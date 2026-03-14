@@ -25,15 +25,22 @@ export default function ChakraModal({ chakra, onClose }) {
           <X className="w-5 h-5 text-[#c4b5fd]" />
         </button>
 
-        <div className="flex items-start gap-6 mb-6">
-          <span className="text-6xl">{chakra.emoji}</span>
-          <div>
-            <h1 className="text-3xl text-gradient-gold mb-1" style={{ fontFamily: "'Cinzel', serif" }}>
-              {chakra.name}
-            </h1>
-            <p className="text-sm text-[#c4b5fd]/60 italic">{chakra.sanskrit}</p>
-            <p className="text-xs text-[#d4af37] mt-2">Located: {chakra.location}</p>
+        <div className="mb-6">
+          <div className="mb-4 w-full max-w-sm mx-auto">
+            <div className="aspect-square rounded-xl overflow-hidden border-2 border-[#d4af37]/20">
+              <img
+                src={chakra.image}
+                alt={chakra.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {e.target.style.display = 'none';}}
+              />
+            </div>
           </div>
+          <h1 className="text-3xl text-gradient-gold mb-1 text-center" style={{ fontFamily: "'Cinzel', serif" }}>
+            {chakra.name}
+          </h1>
+          <p className="text-sm text-[#c4b5fd]/60 italic text-center">{chakra.sanskrit}</p>
+          <p className="text-xs text-[#d4af37] mt-2 text-center">Located: {chakra.location}</p>
         </div>
 
         <div className="space-y-5 text-sm">

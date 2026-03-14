@@ -12,6 +12,7 @@ import { libraryCrystals } from "@/components/veya/crystalData";
 import { chakras } from "@/components/veya/chakraData";
 import TarotGallery from "@/components/veya/TarotGallery";
 import TarotCardFlip from "@/components/veya/TarotCardFlip";
+import CardOfTheDay from "@/components/veya/CardOfTheDay";
 import HerbModal from "@/components/veya/HerbModal";
 import CrystalModal from "@/components/veya/CrystalModal";
 import ChakraModal from "@/components/veya/ChakraModal";
@@ -168,6 +169,7 @@ export default function Library() {
   const [selectedHerb, setSelectedHerb] = useState(null);
   const [selectedCrystal, setSelectedCrystal] = useState(null);
   const [selectedChakra, setSelectedChakra] = useState(null);
+  const [tarotFilter, setTarotFilter] = useState("all");
 
   const { data: tarotCards = [] } = useQuery({
     queryKey: ["tarotCards"],
@@ -188,9 +190,11 @@ export default function Library() {
     c.chakra.toLowerCase().includes(search.toLowerCase())
   );
 
-  const filteredTarot = tarotCards.filter((card) =>
-    card.card_name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredTarot = tarotCards.filter((card) => {
+    const matchesSearch = card.card_name.toLowerCase().includes(search.toLowerCase());
+    const matchesFilter = tarotFilter === "all" || card.arcana_type === tarotFilter;
+    return matchesSearch && matchesFilter;
+  }).sort((a, b) => a.card_number - b.card_number);
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
@@ -335,7 +339,43 @@ export default function Library() {
         </TabsContent>
 
         <TabsContent value="tarot">
-          <p className="text-center text-xs text-[#c4b5fd]/30 mb-8">Explore the Rider-Waite sacred cards</p>
+          <div className="mb-8">
+            <p className="text-center text-xs text-[#c4b5fd]/30 mb-4">Explore the Rider-Waite sacred cards</p>
+            
+            {/* Filter Buttons */}
+            <div className="flex justify-center gap-3 mb-6">
+              <button
+                onClick={() => setTarotFilter("all")}
+                className={`px-4 py-2 rounded-lg text-sm transition-all ${
+                  tarotFilter === "all"
+                    ? "bg-[#7c3aed]/30 text-[#d4af37]"
+                    : "bg-[#7c3aed]/10 text-[#c4b5fd] hover:bg-[#7c3aed]/20"
+                }`}
+              >
+                All Cards
+              </button>
+              <button
+                onClick={() => setTarotFilter("Major")}
+                className={`px-4 py-2 rounded-lg text-sm transition-all ${
+                  tarotFilter === "Major"
+                    ? "bg-[#7c3aed]/30 text-[#d4af37]"
+                    : "bg-[#7c3aed]/10 text-[#c4b5fd] hover:bg-[#7c3aed]/20"
+                }`}
+              >
+                Major Arcana
+              </button>
+              <button
+                onClick={() => setTarotFilter("Minor")}
+                className={`px-4 py-2 rounded-lg text-sm transition-all ${
+                  tarotFilter === "Minor"
+                    ? "bg-[#7c3aed]/30 text-[#d4af37]"
+                    : "bg-[#7c3aed]/10 text-[#c4b5fd] hover:bg-[#7c3aed]/20"
+                }`}
+              >
+                Minor Arcana
+              </button>
+            </div>
+          </div>
           <TarotGallery cards={filteredTarot} onSelectCard={setSelectedCard} />
         </TabsContent>
       </Tabs>

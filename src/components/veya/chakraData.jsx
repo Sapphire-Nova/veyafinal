@@ -158,6 +158,7 @@ export const chakras = [
     element: "Air",
     frequency: "639 Hz",
     mantra: "YAM",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/e2b81e0ed_Gemini_Generated_Image_lnporjlnporjlnpo.png",
     affirmation: "I give and receive love freely and unconditionally.",
     balanced: "Loving, compassionate, empathetic, forgiving, peaceful relationships, emotional resilience.",
     blocks: [

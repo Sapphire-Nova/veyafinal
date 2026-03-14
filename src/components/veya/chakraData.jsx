@@ -207,6 +207,7 @@ export const chakras = [
     element: "Ether",
     frequency: "741 Hz",
     mantra: "HAM",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/7abcb5060_Gemini_Generated_Image_vcasv5vcasv5vcas.png",
     affirmation: "I speak my truth with clarity, confidence, and compassion.",
     balanced: "Clear communication, authentic expression, good listening, living truthfully, creative voice.",
     blocks: [

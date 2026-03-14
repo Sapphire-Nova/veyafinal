@@ -150,7 +150,7 @@ export default function Layout({ children, currentPageName }) {
               className="lg:hidden glass border-t border-[#7c3aed]/10"
             >
               <div className="px-4 py-4 space-y-1">
-                {navItems.map((item) => {
+                {[...navItems, ...(user?.role === "admin" ? adminNavItems : [])].map((item) => {
                   const Icon = item.icon;
                   const isActive = currentPageName === item.page;
                   return (

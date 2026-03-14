@@ -82,7 +82,7 @@ export default function Layout({ children, currentPageName }) {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => {
+              {[...navItems, ...(user?.role === "admin" ? adminNavItems : [])].map((item) => {
                 const Icon = item.icon;
                 const isActive = currentPageName === item.page;
                 return (

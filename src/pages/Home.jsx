@@ -245,11 +245,11 @@ export default function Home() {
           viewport={{ once: true }}>
 
           <p className="text-4xl mb-6">🌕</p>
-          <h3 className="text-[#0b0911] mb-4 text-2xl md:text-3xl"
+          <h3 className="text-2xl md:text-3xl text-[#f5f0ff] mb-4"
           style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
             Your reading awaits.
           </h3>
-          <p className="text-zinc-600 mb-8 text-sm">"You were never lost — you were simply waiting for the right guide to help you remember the magic that has always lived within you."
+          <p className="text-[#c4b5fd] mb-8 text-sm">"You were never lost — you were simply waiting for the right guide to help you remember the magic that has always lived within you."
 
           </p>
           <Link to={BOOKINGS_URL}>

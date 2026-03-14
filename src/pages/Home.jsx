@@ -224,10 +224,10 @@ export default function Home() {
                   to={createPageUrl(tool.page)}
                   className="flex flex-col items-center gap-3 p-5 rounded-2xl border border-[#7c3aed]/10 bg-[#1a0533]/30 hover:border-[#d4af37]/30 hover:bg-[#1a0533]/60 transition-all duration-300 group">
 
-                  <div className="bg-violet-500 rounded-xl w-10 h-10 flex items-center justify-center group-hover:bg-[#d4af37]/10 transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-[#7c3aed]/15 flex items-center justify-center group-hover:bg-[#d4af37]/10 transition-colors">
                     <Icon className="w-5 h-5 text-[#c4b5fd] group-hover:text-[#d4af37] transition-colors" />
                   </div>
-                  <span className="bg-slate-50 text-zinc-600 text-lg font-normal text-center leading-snug opacity-90 group-hover:text-[#f5f0ff] transition-colors">
+                  <span className="text-xs text-[#c4b5fd] text-center leading-snug group-hover:text-[#f5f0ff] transition-colors">
                     {tool.title}
                   </span>
                 </Link>

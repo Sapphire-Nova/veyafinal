@@ -61,6 +61,7 @@ import LiveReading from './pages/LiveReading';
 import LunaCredits from './pages/LunaCredits';
 import ShadowJournal from './pages/ShadowJournal';
 import VioletAdmin from './pages/VioletAdmin';
+import TarotLearning from './pages/TarotLearning';
 import __Layout from './Layout.jsx';
 
 
@@ -79,6 +80,7 @@ export const PAGES = {
     "LunaCredits": LunaCredits,
     "ShadowJournal": ShadowJournal,
     "VioletAdmin": VioletAdmin,
+    "TarotLearning": TarotLearning,
 }
 
 export const pagesConfig = {

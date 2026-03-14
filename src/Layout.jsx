@@ -19,6 +19,7 @@ const navItems = [
   { name: "Ask the Priestess", page: "AskPriestess", icon: Star },
   { name: "Live Reading", page: "LiveReading", icon: Zap },
   { name: "Book a Session", page: "Bookings", icon: Moon },
+  { name: "Luna Credits", page: "LunaCredits", icon: Zap },
 ];
 
 export default function Layout({ children, currentPageName }) {

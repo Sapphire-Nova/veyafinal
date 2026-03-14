@@ -214,9 +214,10 @@ export default function Library() {
         </TabsContent>
 
         <TabsContent value="crystals">
+          <p className="text-center text-xs text-[#c4b5fd]/30 mb-6">Click any crystal to reveal its spiritual benefits & folklore</p>
           <div className="space-y-3">
             {filteredCrystals.map((crystal, i) => (
-              <CrystalCard key={crystal.name} crystal={crystal} delay={i * 0.05} />
+              <CrystalCard key={crystal.name} crystal={crystal} delay={i * 0.03} />
             ))}
           </div>
         </TabsContent>

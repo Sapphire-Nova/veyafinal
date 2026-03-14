@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Leaf, Gem, Search, Zap, Wind, Droplets, Flame, Mountain } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -177,7 +176,6 @@ export default function Library() {
         title="The Sacred Library"
         subtitle="A curated collection of sacred herbs and crystals — their magical properties, folklore, elemental correspondences, and spiritual uses."
         gold />
-
 
       {/* Search */}
       <div className="relative max-w-md mx-auto mb-8">

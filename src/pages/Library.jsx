@@ -16,6 +16,7 @@ import CardOfTheDay from "@/components/veya/CardOfTheDay";
 import HerbModal from "@/components/veya/HerbModal";
 import CrystalModal from "@/components/veya/CrystalModal";
 import ChakraModal from "@/components/veya/ChakraModal";
+import ChakraImageDisplay from "@/components/veya/ChakraImageDisplay";
 
 const elementColors = {
   Fire: "text-orange-400",
@@ -322,9 +323,7 @@ export default function Library() {
                 onClick={() => setSelectedChakra(chakra)}
                 className="text-left hover:opacity-90 transition-all"
               >
-                <div className="mb-3">
-                  <TarotCardImage cardCode={null} cardName={null} />
-                </div>
+                <ChakraImageDisplay chakra={chakra} clickable />
                 <h3 className="text-[#f5f0ff] font-semibold mb-1" style={{ fontFamily: "'Cinzel', serif" }}>
                   {chakra.name}
                 </h3>

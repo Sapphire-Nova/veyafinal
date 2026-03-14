@@ -67,7 +67,7 @@ export default function Home() {
               Reconnect with the Magic that Lives{" "}
               <span className="text-gradient-gold">Within You.</span>
             </h1>
-            <p className="text-[#c4b5fd]/70 text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+            <p className="text-[#e2dcff] text-base md:text-lg leading-relaxed mb-10 max-w-xl">
               Violet, founder of Luna Bloom Tarot, welcomes you. Step through the veil for Tarot, Mediumship, Reiki, and Lightworker Blessing Rituals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -153,7 +153,7 @@ export default function Home() {
                   style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
                   {svc.title}
                 </h3>
-                <p className="text-sm text-[#c4b5fd]/60 leading-relaxed">{svc.description}</p>
+                <p className="text-sm text-[#d4c9ff] leading-relaxed">{svc.description}</p>
               </div>
               <Link to={BOOKINGS_URL}
                 className="mt-auto inline-flex items-center gap-2 text-xs text-[#d4af37] hover:text-[#f5e6a3] transition-colors">
@@ -193,10 +193,10 @@ export default function Home() {
                 style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
                 I bridge worlds — so you can find your way home.
               </h2>
-              <p className="text-[#c4b5fd]/70 text-sm md:text-base leading-relaxed mb-4">
+              <p className="text-[#e2dcff] text-sm md:text-base leading-relaxed mb-4">
                 I bridge the physical and spiritual realms as a Reiki Master (Level III), Certified Life Coach, and specialist in Chakra and Crystal Healing. My unique approach to holistic wellness has been featured in two local magazines, highlighting my dedication to helping clients find clarity and healing.
               </p>
-              <p className="text-[#c4b5fd]/50 text-sm leading-relaxed">
+              <p className="text-[#c4b5fd] text-sm leading-relaxed">
                 Whether you're navigating grief, seeking soul clarity, or simply craving reconnection with your own magic — I meet you exactly where you are, with warmth, depth, and a little bit of fire. ✦
               </p>
               <p className="text-[#d4af37] text-sm mt-5 italic" style={{ fontFamily: "'Cinzel', serif" }}>
@@ -231,7 +231,7 @@ export default function Home() {
                   <div className="w-10 h-10 rounded-xl bg-[#7c3aed]/15 flex items-center justify-center group-hover:bg-[#d4af37]/10 transition-colors">
                     <Icon className="w-5 h-5 text-[#c4b5fd] group-hover:text-[#d4af37] transition-colors" />
                   </div>
-                  <span className="text-xs text-[#c4b5fd]/60 text-center leading-snug group-hover:text-[#c4b5fd] transition-colors">
+                  <span className="text-xs text-[#c4b5fd] text-center leading-snug group-hover:text-[#f5f0ff] transition-colors">
                     {tool.title}
                   </span>
                 </Link>
@@ -253,7 +253,7 @@ export default function Home() {
             style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
             Your reading awaits.
           </h3>
-          <p className="text-[#c4b5fd]/50 mb-8 text-sm">
+          <p className="text-[#c4b5fd] mb-8 text-sm">
             "You were never lost — you were simply waiting for the right guide to help you remember the magic that has always lived within you."
           </p>
           <Link to={BOOKINGS_URL}>

@@ -108,7 +108,7 @@ Respond as Violet in a live, present, intimate reading:`
   // ── OFFLINE STATE ──
   if (!isLive) {
     return (
-      <div className="bg-zinc-500 px-4 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
         <div className="fixed inset-0 pointer-events-none">
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-10"
           style={{ background: "radial-gradient(circle, rgba(124,58,237,0.5) 0%, transparent 70%)" }} />

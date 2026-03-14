@@ -170,7 +170,7 @@ export default function Library() {
   );
 
   return (
-    <div className="bg-zinc-500 mx-auto px-4 py-12 max-w-4xl sm:px-6">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <SectionHeader
         title="The Sacred Library"
         subtitle="A curated collection of sacred herbs and crystals — their magical properties, folklore, elemental correspondences, and spiritual uses."

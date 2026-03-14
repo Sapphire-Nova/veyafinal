@@ -4,7 +4,7 @@ import SectionHeader from "@/components/veya/SectionHeader";
 
 export default function Bookings() {
   return (
-    <div className="bg-zinc-500 mx-auto px-4 py-12 max-w-6xl sm:px-6">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
       <SectionHeader
         title="Book a Session"
         subtitle="Choose your session with Violet — channeled, energy-driven, and uniquely crafted for your soul's journey."

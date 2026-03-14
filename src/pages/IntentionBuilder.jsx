@@ -74,7 +74,7 @@ export default function IntentionBuilder() {
   };
 
   return (
-    <div className="bg-zinc-500 mx-auto px-4 py-12 max-w-5xl sm:px-6">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       <SectionHeader
         title="Intention Builder"
         subtitle="Select your desires and let the universe craft a personalized spell with herbs, crystals, and celestial timing."

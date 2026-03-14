@@ -40,10 +40,10 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="bg-zinc-500 relative">
+    <div className="relative">
 
       {/* ── HERO ── */}
-      <section className="bg-zinc-500 px-4 py-20 min-h-screen flex items-center sm:px-8 relative overflow-hidden">
+      <section className="min-h-screen flex items-center px-4 sm:px-8 py-20 relative overflow-hidden">
         {/* ambient glow */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20 pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%)" }} />
@@ -124,7 +124,7 @@ export default function Home() {
       </section>
 
       {/* ── SACRED INVITATIONS ── */}
-      <section className="bg-zinc-500 mx-auto px-4 py-20 max-w-7xl sm:px-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <SectionHeader
           title="Sacred Invitations"
           subtitle="Direct sessions with Violet — channeled, energy-driven, and uniquely crafted for your soul's journey."
@@ -205,7 +205,7 @@ export default function Home() {
       </section>
 
       {/* ── SPIRITUAL TOOLBOX ── */}
-      <section className="bg-zinc-500 mx-auto px-4 py-20 max-w-7xl sm:px-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <SectionHeader
           title="Your Spiritual Toolbox"
           subtitle="Self-guided practices to deepen your journey between sessions." />

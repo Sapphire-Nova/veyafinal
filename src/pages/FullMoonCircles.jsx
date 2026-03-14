@@ -136,7 +136,7 @@ export default function FullMoonCircles() {
   const userRSVPMoons = rsvps.map((r) => r.moon_name);
 
   return (
-    <div className="bg-zinc-500 mx-auto px-4 py-12 max-w-7xl sm:px-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
       <SectionHeader
         title="Full Moon Circles"
         subtitle="Sacred monthly gatherings held under the full moon. Meditate, set intentions, and connect with fellow seekers."

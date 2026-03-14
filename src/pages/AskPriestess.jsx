@@ -68,7 +68,7 @@ Respond as Violet:`
   if (!user) return null;
 
   return (
-    <div className="bg-zinc-600 mx-auto px-4 py-12 max-w-3xl sm:px-6">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
       <SectionHeader
         title="Ask the Priestess"
         subtitle="Receive personalized spiritual guidance from Violet. Ask about tarot, chakras, crystals, moon phases, or anything your soul needs."

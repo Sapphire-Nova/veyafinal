@@ -108,7 +108,7 @@ export default function LunaCredits() {
   const isCancelled = urlParams.get("cancelled") === "true";
 
   return (
-    <div className="bg-zinc-500 mx-auto px-4 py-12 max-w-5xl sm:px-6">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       <SectionHeader
         title="Luna Credits"
         subtitle="Power your spiritual journey. Credits unlock AI readings, intention spells, and more."

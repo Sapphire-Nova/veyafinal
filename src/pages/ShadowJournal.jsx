@@ -55,7 +55,7 @@ export default function ShadowJournal() {
   if (!user) return null;
 
   return (
-    <div className="bg-zinc-500 mx-auto px-4 py-12 max-w-4xl sm:px-6">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <SectionHeader
         title="Shadow Journal"
         subtitle="A sacred, private space for your deepest reflections. Write freely or use guided prompts."

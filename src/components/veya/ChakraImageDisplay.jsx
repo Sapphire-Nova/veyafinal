@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 export default function ChakraImageDisplay({ chakra, clickable = false, onClick = null }) {
   return (
+    <div>
     <motion.div
       whileHover={clickable ? { scale: 1.05 } : {}}
       onClick={clickable ? onClick : undefined}
@@ -31,5 +32,9 @@ export default function ChakraImageDisplay({ chakra, clickable = false, onClick 
         }}
       />
     </motion.div>
+    <p className="text-center text-sm text-[#c4b5fd] font-medium mt-2" style={{ fontFamily: "'Cinzel', serif" }}>
+      {chakra.name}
+    </p>
+    </div>
   );
 }

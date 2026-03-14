@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Leaf, Gem, Search, Zap, Wind, Droplets, Flame, Mountain } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SectionHeader from "@/components/veya/SectionHeader";
+import ApothecaryGrid from "@/components/veya/ApothecaryGrid";
 import { libraryHerbs } from "@/components/veya/herbData";
 import { libraryCrystals } from "@/components/veya/crystalData";
 

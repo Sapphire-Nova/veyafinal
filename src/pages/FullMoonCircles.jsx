@@ -167,9 +167,18 @@ export default function FullMoonCircles() {
             </div>
           ))}
         </div>
-        <div className="mt-4 flex items-center justify-center gap-2 text-xs text-[#c4b5fd]/30">
-          <Video className="w-3 h-3" />
-          <span>Via Zoom · Every Full Moon · 6:00 PM PT</span>
+        <div className="mt-4 flex flex-col items-center gap-1 text-xs text-[#c4b5fd]/30">
+          <div className="flex items-center gap-2">
+            <Video className="w-3 h-3" />
+            <span>Via Zoom · Every Full Moon · 6:00 PM PT</span>
+          </div>
+          <div className="flex items-center gap-2 mt-1">
+            <a href={ZOOM_LINK} target="_blank" rel="noopener noreferrer" className="text-[#7c3aed]/70 hover:text-[#7c3aed] transition-colors underline underline-offset-2">
+              Join Zoom
+            </a>
+            <span>·</span>
+            <span>Passcode: <span className="text-[#d4af37]/60 font-mono">{ZOOM_PASSCODE}</span></span>
+          </div>
         </div>
       </motion.div>
 

@@ -198,11 +198,12 @@ export default function FullMoonCircles() {
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4 mt-4">
+            <p className="text-xs text-[#d4af37] italic">{selectedEvent?.focus}</p>
             <p className="text-sm text-[#c4b5fd]/60">{selectedEvent?.significance}</p>
             <div className="flex gap-4 text-xs text-[#c4b5fd]/40">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3 h-3" />
-                {selectedEvent?.date}
+                {selectedEvent?.date && new Date(selectedEvent.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
               </span>
               <span className="flex items-center gap-1">
                 <Clock className="w-3 h-3" />

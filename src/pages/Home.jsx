@@ -183,17 +183,16 @@ export default function Home() {
             </div>
             {/* Text */}
             <div>
-              <p className="bg-slate-800 text-[#d4af37] mb-3 text-xs uppercase tracking-[0.25em]" style={{ fontFamily: "'Cinzel', serif" }}>
+              <p className="text-[#d4af37] text-xs uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
                 ✦ A Message from the Priestess
               </p>
-              <h2 className="text-[#463861] mb-4 text-2xl md:text-3xl"
+              <h2 className="text-2xl md:text-3xl text-[#f5f0ff] mb-4"
               style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
                 I bridge worlds — so you can find your way home.
               </h2>
-              <p className="text-zinc-700 mb-4 text-sm leading-relaxed md:text-base">I bridge the physical and spiritual realms as a Reiki Master (Level III), Certified Life Coach, and specialist in Chakra and Crystal Healing. My unique approach to holistic wellness has been featured in two local magazines, highlighting my dedication to helping clients find clarity and healing.
-
+              <p className="text-[#e2dcff] text-sm md:text-base leading-relaxed mb-4">I bridge the physical and spiritual realms as a Reiki Master (Level III), Certified Life Coach, and specialist in Chakra and Crystal Healing. My unique approach to holistic wellness has been featured in two local magazines, highlighting my dedication to helping clients find clarity and healing.
               </p>
-              <p className="text-[#08070d] text-sm leading-relaxed">Whether you're navigating grief, seeking soul clarity, or simply craving reconnection with your own magic — I meet you exactly where you are, with warmth, depth, and a little bit of fire. ✦
+              <p className="text-[#c4b5fd] text-sm leading-relaxed">Whether you're navigating grief, seeking soul clarity, or simply craving reconnection with your own magic — I meet you exactly where you are, with warmth, depth, and a little bit of fire. ✦
 
               </p>
               <p className="text-[#d4af37] text-sm mt-5 italic" style={{ fontFamily: "'Cinzel', serif" }}>

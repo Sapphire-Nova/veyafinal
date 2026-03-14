@@ -50,6 +50,8 @@
 import Home from './pages/Home';
 import FullMoonCircles from './pages/FullMoonCircles';
 import IntentionBuilder from './pages/IntentionBuilder';
+import ChakraHub from './pages/ChakraHub';
+import Library from './pages/Library';
 import __Layout from './Layout.jsx';
 
 
@@ -57,6 +59,8 @@ export const PAGES = {
     "Home": Home,
     "FullMoonCircles": FullMoonCircles,
     "IntentionBuilder": IntentionBuilder,
+    "ChakraHub": ChakraHub,
+    "Library": Library,
 }
 
 export const pagesConfig = {

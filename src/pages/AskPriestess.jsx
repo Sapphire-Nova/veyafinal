@@ -29,10 +29,10 @@ export default function AskPriestess() {
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setLoading(true);
 
-    const history = messages
-      .slice(-6)
-      .map((m) => `${m.role === "user" ? "Seeker" : "Violet"}: ${m.content}`)
-      .join("\n");
+    const history = messages.
+    slice(-6).
+    map((m) => `${m.role === "user" ? "Seeker" : "Violet"}: ${m.content}`).
+    join("\n");
 
     const response = await base44.integrations.Core.InvokeLLM({
       prompt: `You are Violet, the mystical spiritual guide and High Priestess of Luna Bloom Tarot. 
@@ -50,7 +50,7 @@ ${history}
 
 The seeker asks: "${userMessage}"
 
-Respond as Violet:`,
+Respond as Violet:`
     });
 
     setMessages((prev) => [...prev, { role: "assistant", content: response }]);
@@ -58,101 +58,101 @@ Respond as Violet:`,
   };
 
   const suggestions = [
-    "What does the current moon phase mean for me?",
-    "I'm feeling stuck in my career. What do the cards say?",
-    "How can I open my heart chakra?",
-    "I keep having recurring dreams about water.",
-    "What crystal should I carry this week?",
-  ];
+  "What does the current moon phase mean for me?",
+  "I'm feeling stuck in my career. What do the cards say?",
+  "How can I open my heart chakra?",
+  "I keep having recurring dreams about water.",
+  "What crystal should I carry this week?"];
+
 
   if (!user) return null;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div className="bg-zinc-600 mx-auto px-4 py-12 max-w-3xl sm:px-6">
       <SectionHeader
         title="Ask the Priestess"
         subtitle="Receive personalized spiritual guidance from Violet. Ask about tarot, chakras, crystals, moon phases, or anything your soul needs."
-        gold
-      />
+        gold />
+
 
       {/* Chat Area */}
       <div className="glass-card p-4 md:p-6 min-h-[400px] max-h-[600px] overflow-y-auto mb-4">
-        {messages.length === 0 ? (
-          <div className="text-center py-12">
+        {messages.length === 0 ?
+        <div className="text-center py-12">
             <Moon className="w-12 h-12 text-[#7c3aed]/30 mx-auto mb-4" />
             <p className="text-[#c4b5fd]/40 text-sm mb-6">
               The Priestess awaits your question, beautiful soul...
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              {suggestions.map((s, i) => (
-                <button
-                  key={i}
-                  onClick={() => setInput(s)}
-                  className="text-xs px-3 py-2 rounded-lg bg-[#7c3aed]/10 border border-[#7c3aed]/15 text-[#c4b5fd]/50 hover:text-[#c4b5fd] hover:border-[#7c3aed]/30 transition-all"
-                >
+              {suggestions.map((s, i) =>
+            <button
+              key={i}
+              onClick={() => setInput(s)}
+              className="text-xs px-3 py-2 rounded-lg bg-[#7c3aed]/10 border border-[#7c3aed]/15 text-[#c4b5fd]/50 hover:text-[#c4b5fd] hover:border-[#7c3aed]/30 transition-all">
+
                   {s}
                 </button>
-              ))}
+            )}
             </div>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {messages.map((msg, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-              >
+          </div> :
+
+        <div className="space-y-4">
+            {messages.map((msg, i) =>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-3 ${
-                    msg.role === "user"
-                      ? "bg-[#7c3aed]/30 text-[#f5f0ff]"
-                      : "bg-[#1a0533]/60 border border-[#d4af37]/10 text-[#c4b5fd]/80"
-                  }`}
-                >
-                  {msg.role === "assistant" && (
-                    <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
+              className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+              msg.role === "user" ?
+              "bg-[#7c3aed]/30 text-[#f5f0ff]" :
+              "bg-[#1a0533]/60 border border-[#d4af37]/10 text-[#c4b5fd]/80"}`
+              }>
+
+                  {msg.role === "assistant" &&
+              <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
                       <Star className="w-3 h-3" /> Violet
                     </p>
-                  )}
-                  {msg.role === "user" ? (
-                    <p className="text-sm">{msg.content}</p>
-                  ) : (
-                    <ReactMarkdown className="text-sm prose prose-sm prose-invert max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+              }
+                  {msg.role === "user" ?
+              <p className="text-sm">{msg.content}</p> :
+
+              <ReactMarkdown className="text-sm prose prose-sm prose-invert max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
                       {msg.content}
                     </ReactMarkdown>
-                  )}
+              }
                 </div>
               </motion.div>
-            ))}
+          )}
 
-            {loading && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="flex justify-start"
-              >
+            {loading &&
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex justify-start">
+
                 <div className="bg-[#1a0533]/60 border border-[#d4af37]/10 rounded-2xl px-4 py-3">
                   <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
                     <Star className="w-3 h-3" /> Violet
                   </p>
                   <div className="flex gap-1">
-                    {[0, 1, 2].map((i) => (
-                      <motion.div
-                        key={i}
-                        animate={{ opacity: [0.3, 1, 0.3] }}
-                        transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-                        className="w-2 h-2 rounded-full bg-[#7c3aed]"
-                      />
-                    ))}
+                    {[0, 1, 2].map((i) =>
+                <motion.div
+                  key={i}
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+                  className="w-2 h-2 rounded-full bg-[#7c3aed]" />
+
+                )}
                   </div>
                 </div>
               </motion.div>
-            )}
+          }
             <div ref={chatEndRef} />
           </div>
-        )}
+        }
       </div>
 
       {/* Input */}
@@ -167,16 +167,16 @@ Respond as Violet:`,
             }
           }}
           placeholder="Ask the Priestess..."
-          className="bg-[#1a0533]/40 border-[#7c3aed]/20 text-[#f5f0ff] placeholder:text-[#c4b5fd]/30 min-h-[50px] max-h-[120px] rounded-xl resize-none"
-        />
+          className="bg-[#1a0533]/40 border-[#7c3aed]/20 text-[#f5f0ff] placeholder:text-[#c4b5fd]/30 min-h-[50px] max-h-[120px] rounded-xl resize-none" />
+
         <Button
           onClick={sendMessage}
           disabled={!input.trim() || loading}
-          className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white rounded-xl px-4 self-end"
-        >
+          className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white rounded-xl px-4 self-end">
+
           <Send className="w-4 h-4" />
         </Button>
       </div>
-    </div>
-  );
+    </div>);
+
 }

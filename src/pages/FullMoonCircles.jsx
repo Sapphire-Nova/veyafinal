@@ -92,6 +92,10 @@ export default function FullMoonCircles() {
                 <td style="color:#d4af37;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:6px 0;">🔗 Zoom Link</td>
                 <td style="font-size:14px;padding:6px 0;"><a href="${ZOOM_LINK}" style="color:#7c3aed;">${ZOOM_LINK}</a></td>
               </tr>
+              <tr>
+                <td style="color:#d4af37;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:6px 0;">🔑 Passcode</td>
+                <td style="color:#f5f0ff;font-size:14px;font-family:monospace;padding:6px 0;">${ZOOM_PASSCODE}</td>
+              </tr>
             </table>
           </div>
 

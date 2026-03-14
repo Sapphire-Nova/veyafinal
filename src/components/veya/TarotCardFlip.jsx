@@ -66,13 +66,7 @@ export default function TarotCardFlip({ card, onClose }) {
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0"
                 >
-                  <div className="w-full h-full rounded-xl overflow-hidden border-2 border-[#d4af37]/30 bg-[#1a0533] flex items-center justify-center">
-                    <img
-                      src={card.image_url}
-                      alt={card.card_name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <TarotCardImage cardCode={card.card_code} cardName={card.card_name} />
                 </motion.div>
 
                 {/* Back - Meanings */}

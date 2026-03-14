@@ -200,7 +200,7 @@ export default function Library() {
             value="crystals"
             className="text-sm data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] rounded-lg gap-2"
           >
-            <Gem className="w-4 h-4" /> Crystals
+            <Gem className="w-4 h-4" /> Crystals ({libraryCrystals.length})
           </TabsTrigger>
         </TabsList>
 

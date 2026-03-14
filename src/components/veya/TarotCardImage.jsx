@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getCardImageUrl } from "@/lib/tarotImageMap";
+import { getCardImageUrl } from "@/lib/PageNotFound";
 
 export default function TarotCardImage({ cardCode, cardName, showFallback = false }) {
   const [imageFailed, setImageFailed] = useState(false);

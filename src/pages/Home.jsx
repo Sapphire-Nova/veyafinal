@@ -107,7 +107,7 @@ export default function Home() {
                 style={{ background: "rgba(26,5,51,0.6)", backdropFilter: "blur(20px)" }}>
                 {/* Portrait placeholder — replace src with Violet's actual photo */}
                 <img
-                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80"
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/881eac4ce_PsychicViolet_20260309_225015_0000.png"
                   alt="Violet — Luna Bloom Tarot"
                   className="w-full h-full object-cover object-top opacity-80"
                 />
@@ -179,7 +179,7 @@ export default function Home() {
             {/* Photo thumbnail */}
             <div className="flex-shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-[#d4af37]/25">
               <img
-                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/881eac4ce_PsychicViolet_20260309_225015_0000.png"
                 alt="Violet"
                 className="w-full h-full object-cover object-top opacity-85"
               />

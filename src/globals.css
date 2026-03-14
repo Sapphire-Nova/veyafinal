@@ -18,8 +18,12 @@
 @layer base {
   body {
     background: var(--veya-void);
-    color: var(--veya-ghost);
+    color: #000000;
     font-family: 'Inter', sans-serif;
+  }
+
+  * {
+    color: #000000;
   }
 
   p, span, li, td, th, label, input, textarea {

@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/veya/SectionHeader";
+import DailyWisdom from "@/components/veya/DailyWisdom";
+import ChakraHoneycomb from "@/components/veya/ChakraHoneycomb";
+import LightworkerSpotlight from "@/components/veya/LightworkerSpotlight";
 
 const BOOKINGS_URL = createPageUrl("Bookings");
 
@@ -123,6 +126,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── DAILY WISDOM ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <DailyWisdom />
+      </section>
+
+      {/* ── LIGHTWORKER SPOTLIGHT ── */}
+      <LightworkerSpotlight />
+
       {/* ── SACRED INVITATIONS ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <SectionHeader
@@ -163,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* ── MESSAGE FROM THE PRIESTESS ── */}
-      <section className="bg-zinc-500 mx-auto px-4 py-10 max-w-5xl sm:px-6">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

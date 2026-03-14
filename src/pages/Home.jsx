@@ -1,192 +1,270 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Moon, Sparkles, Compass, BookOpen, Heart, Star, ArrowRight } from "lucide-react";
+import { Moon, Sparkles, Compass, BookOpen, Heart, Star, ArrowRight, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
-import HeroOrb from "@/components/veya/HeroOrb";
-import FeatureCard from "@/components/veya/FeatureCard";
 import SectionHeader from "@/components/veya/SectionHeader";
 
-const features = [
+const BOOKINGS_URL = "https://outlook.office365.com/book/";
+
+const services = [
   {
-    icon: Moon,
-    title: "Full Moon Circles",
-    description: "Join our sacred monthly gatherings. Meditate, connect, and set intentions under the light of the full moon.",
-    page: "FullMoonCircles",
+    emoji: "🌙",
+    title: "Mediumship & Tarot",
+    description: "Bridge the gap between worlds. Gain clarity on your soul path through channeled wisdom and sacred card readings.",
+    glow: false,
   },
   {
-    icon: Sparkles,
-    title: "Intention Builder",
-    description: "Craft personalized spells and rituals combining herbs, crystals, and celestial timing for your desires.",
-    page: "IntentionBuilder",
+    emoji: "✨",
+    title: "Reiki & Energy Work",
+    description: "Restore your luminous field. Distant energy healing sessions designed to balance, clear, and ignite your spirit.",
+    glow: false,
   },
   {
-    icon: Compass,
-    title: "Chakra Hub",
-    description: "Explore all 7 energy centers. Diagnose blockages and discover foods, crystals, yoga, and frequencies to heal.",
-    page: "ChakraHub",
+    emoji: "🕯️",
+    title: "Lightworker Blessing Rituals",
+    description: "Intentional magic crafted to amplify your light and manifest your highest timeline. Sacred, powerful, and uniquely yours.",
+    glow: true,
   },
-  {
-    icon: BookOpen,
-    title: "The Library",
-    description: "A curated collection of sacred herbs and crystals — their properties, uses, and spiritual significance.",
-    page: "Library",
-  },
-  {
-    icon: Heart,
-    title: "Shadow Journal",
-    description: "Private journaling with guided prompts for inner child work, triggers, and self-forgiveness.",
-    page: "ShadowJournal",
-  },
-  {
-    icon: Star,
-    title: "Ask the Priestess",
-    description: "Receive personalized spiritual guidance from Violet, powered by ancient wisdom and intuition.",
-    page: "AskPriestess",
-  },
+];
+
+const tools = [
+  { icon: Moon, title: "Full Moon Circles", page: "FullMoonCircles" },
+  { icon: Sparkles, title: "Intention Builder", page: "IntentionBuilder" },
+  { icon: Compass, title: "Chakra Hub", page: "ChakraHub" },
+  { icon: BookOpen, title: "Sacred Library", page: "Library" },
+  { icon: Heart, title: "Shadow Journal", page: "ShadowJournal" },
+  { icon: Star, title: "Ask the Priestess", page: "AskPriestess" },
 ];
 
 export default function Home() {
   return (
     <div className="relative">
-      {/* Hero Section */}
-      <section className="min-h-[90vh] flex flex-col items-center justify-center px-4 relative overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="mb-8"
-        >
-          <HeroOrb />
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center max-w-3xl"
-        >
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient-gold mb-4"
-            style={{ fontFamily: "'Cinzel', serif" }}
-          >
-            Veya
-          </h1>
-          <p
-            className="text-lg md:text-xl text-[#c4b5fd]/80 mb-2"
-            style={{ fontFamily: "'Cinzel', serif" }}
-          >
-            A Spiritual Portal by Violet
-          </p>
-          <p className="text-sm md:text-base text-[#c4b5fd]/50 max-w-xl mx-auto mb-8 leading-relaxed">
-            Step through the veil. Discover ancient wisdom reborn for the modern mystic.
-            Rituals, readings, and radical self-discovery — guided by the moon.
-          </p>
+      {/* ── HERO ── */}
+      <section className="min-h-screen flex items-center px-4 sm:px-8 py-20 relative overflow-hidden">
+        {/* ambient glow */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20 pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%)" }} />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full opacity-15 pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%)" }} />
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to={createPageUrl("FullMoonCircles")}>
-              <Button className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white px-8 py-6 rounded-xl text-base glow-violet">
-                <Moon className="w-5 h-5 mr-2" />
-                Join a Full Moon Circle
-              </Button>
-            </Link>
-            <Link to={createPageUrl("IntentionBuilder")}>
-              <Button
-                variant="outline"
-                className="border-[#d4af37]/30 text-[#d4af37] hover:bg-[#d4af37]/10 px-8 py-6 rounded-xl text-base"
-              >
-                <Sparkles className="w-5 h-5 mr-2" />
-                Build an Intention
-              </Button>
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8"
-        >
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left — copy */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border border-[#7c3aed]/30 flex items-start justify-center pt-2"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
           >
-            <div className="w-1 h-2 rounded-full bg-[#7c3aed]/60" />
+            <p className="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-5" style={{ fontFamily: "'Cinzel', serif" }}>
+              Luna Bloom Tarot
+            </p>
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6"
+              style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif", color: "#f5f0ff" }}
+            >
+              Reconnect with the Magic that Lives{" "}
+              <span className="text-gradient-gold">Within You.</span>
+            </h1>
+            <p className="text-[#c4b5fd]/70 text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+              Violet, founder of Luna Bloom Tarot, welcomes you. Step through the veil for Tarot, Mediumship, Reiki, and Lightworker Blessing Rituals.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href={BOOKINGS_URL} target="_blank" rel="noopener noreferrer">
+                <Button
+                  className="px-8 py-6 rounded-xl text-base font-medium"
+                  style={{ background: "#d4af37", color: "#0a0118" }}
+                >
+                  Book a Session with Violet
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
+              <Link to={createPageUrl("FullMoonCircles")}>
+                <Button
+                  variant="outline"
+                  className="border-[#7c3aed]/40 text-[#c4b5fd] hover:bg-[#7c3aed]/10 px-8 py-6 rounded-xl text-base"
+                >
+                  <Moon className="w-5 h-5 mr-2" />
+                  Join a Full Moon Circle
+                </Button>
+              </Link>
+            </div>
           </motion.div>
-        </motion.div>
+
+          {/* Right — Violet portrait placeholder */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+            className="flex justify-center lg:justify-end"
+          >
+            <div className="relative w-[340px] h-[420px] md:w-[400px] md:h-[500px]">
+              {/* Glow ring behind image */}
+              <div className="absolute inset-0 rounded-3xl opacity-40"
+                style={{ background: "radial-gradient(ellipse at center, rgba(212,175,55,0.4), transparent 70%)" }} />
+              <div className="w-full h-full rounded-3xl overflow-hidden border border-[#d4af37]/20"
+                style={{ background: "rgba(26,5,51,0.6)", backdropFilter: "blur(20px)" }}>
+                {/* Portrait placeholder — replace src with Violet's actual photo */}
+                <img
+                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80"
+                  alt="Violet — Luna Bloom Tarot"
+                  className="w-full h-full object-cover object-top opacity-80"
+                />
+                <div className="absolute inset-0 rounded-3xl"
+                  style={{ background: "linear-gradient(to top, rgba(10,1,24,0.8) 0%, transparent 50%)" }} />
+              </div>
+              {/* Badge */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 glass px-5 py-2.5 rounded-full border border-[#d4af37]/30 whitespace-nowrap">
+                <p className="text-[#d4af37] text-xs font-medium" style={{ fontFamily: "'Cinzel', serif" }}>
+                  ✦ Violet · Luna Bloom Tarot ✦
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Features Grid */}
+      {/* ── SACRED INVITATIONS ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <SectionHeader
-          title="The Sacred Offerings"
-          subtitle="Every tool Violet has channeled for your spiritual evolution — all in one sanctum."
+          title="Sacred Invitations"
+          subtitle="Direct sessions with Violet — channeled, energy-driven, and uniquely crafted for your soul's journey."
           gold
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <FeatureCard key={feature.page} {...feature} delay={index * 0.1} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((svc, i) => (
+            <motion.div
+              key={svc.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              whileHover={svc.glow ? { boxShadow: "0 0 40px rgba(212,175,55,0.35), 0 0 80px rgba(212,175,55,0.1)" } : {}}
+              className="glass-card p-7 flex flex-col gap-5 border border-[#d4af37]/20 hover:border-[#d4af37]/50 transition-all duration-300 cursor-default rounded-2xl relative overflow-hidden"
+            >
+              {svc.glow && (
+                <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                  style={{ background: "radial-gradient(ellipse at top left, rgba(212,175,55,0.08), transparent 70%)" }} />
+              )}
+              <span className="text-4xl">{svc.emoji}</span>
+              <div>
+                <h3 className="text-lg font-semibold text-[#f5f0ff] mb-2"
+                  style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
+                  {svc.title}
+                </h3>
+                <p className="text-sm text-[#c4b5fd]/60 leading-relaxed">{svc.description}</p>
+              </div>
+              <a href={BOOKINGS_URL} target="_blank" rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-2 text-xs text-[#d4af37] hover:text-[#f5e6a3] transition-colors">
+                Book this session <ArrowRight className="w-3 h-3" />
+              </a>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Violet's Message */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+      {/* ── MESSAGE FROM THE PRIESTESS ── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="glass-card p-8 md:p-12 text-center relative overflow-hidden"
+          transition={{ duration: 0.8 }}
+          className="glass-card p-8 md:p-12 relative overflow-hidden rounded-2xl"
         >
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              background: "radial-gradient(ellipse at center, rgba(212,175,55,0.3), transparent 70%)",
-            }}
-          />
-          <div className="relative z-10">
-            <span className="text-3xl mb-4 block">✨</span>
-            <p
-              className="text-lg md:text-xl text-[#c4b5fd]/80 italic leading-relaxed mb-6"
-              style={{ fontFamily: "'Cinzel', serif" }}
-            >
-              "You were never lost — you were simply waiting for the right guide to help you
-              remember the magic that has always lived within you."
-            </p>
-            <p className="text-[#d4af37] text-sm" style={{ fontFamily: "'Cinzel', serif" }}>
-              — Violet, Luna Bloom Tarot
-            </p>
+          <div className="absolute inset-0 opacity-10 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse at top right, rgba(212,175,55,0.4), transparent 60%)" }} />
+          <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+            {/* Photo thumbnail */}
+            <div className="flex-shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-[#d4af37]/25">
+              <img
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80"
+                alt="Violet"
+                className="w-full h-full object-cover object-top opacity-85"
+              />
+            </div>
+            {/* Text */}
+            <div>
+              <p className="text-[#d4af37] text-xs uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
+                ✦ A Message from the Priestess
+              </p>
+              <h2 className="text-2xl md:text-3xl text-[#f5f0ff] mb-4"
+                style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
+                I bridge worlds — so you can find your way home.
+              </h2>
+              <p className="text-[#c4b5fd]/70 text-sm md:text-base leading-relaxed mb-4">
+                I bridge the physical and spiritual realms as a Reiki Master (Level III), Certified Life Coach, and specialist in Chakra and Crystal Healing. My unique approach to holistic wellness has been featured in two local magazines, highlighting my dedication to helping clients find clarity and healing.
+              </p>
+              <p className="text-[#c4b5fd]/50 text-sm leading-relaxed">
+                Whether you're navigating grief, seeking soul clarity, or simply craving reconnection with your own magic — I meet you exactly where you are, with warmth, depth, and a little bit of fire. ✦
+              </p>
+              <p className="text-[#d4af37] text-sm mt-5 italic" style={{ fontFamily: "'Cinzel', serif" }}>
+                — Violet
+              </p>
+            </div>
           </div>
         </motion.div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-20">
+      {/* ── SPIRITUAL TOOLBOX ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+        <SectionHeader
+          title="Your Spiritual Toolbox"
+          subtitle="Self-guided practices to deepen your journey between sessions."
+        />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {tools.map((tool, i) => {
+            const Icon = tool.icon;
+            return (
+              <motion.div
+                key={tool.page}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+              >
+                <Link
+                  to={createPageUrl(tool.page)}
+                  className="flex flex-col items-center gap-3 p-5 rounded-2xl border border-[#7c3aed]/10 bg-[#1a0533]/30 hover:border-[#d4af37]/30 hover:bg-[#1a0533]/60 transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#7c3aed]/15 flex items-center justify-center group-hover:bg-[#d4af37]/10 transition-colors">
+                    <Icon className="w-5 h-5 text-[#c4b5fd] group-hover:text-[#d4af37] transition-colors" />
+                  </div>
+                  <span className="text-xs text-[#c4b5fd]/60 text-center leading-snug group-hover:text-[#c4b5fd] transition-colors">
+                    {tool.title}
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ── */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
         >
-          <h3
-            className="text-2xl md:text-3xl text-gradient-violet mb-4"
-            style={{ fontFamily: "'Cinzel', serif" }}
-          >
-            Ready to Begin Your Journey?
+          <p className="text-4xl mb-6">🌕</p>
+          <h3 className="text-2xl md:text-3xl text-[#f5f0ff] mb-4"
+            style={{ fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif" }}>
+            Your reading awaits.
           </h3>
           <p className="text-[#c4b5fd]/50 mb-8 text-sm">
-            Create your free account and unlock the mysteries within.
+            "You were never lost — you were simply waiting for the right guide to help you remember the magic that has always lived within you."
           </p>
-          <Link to={createPageUrl("Dashboard")}>
-            <Button className="bg-gradient-to-r from-[#7c3aed] to-[#6d28d9] text-white px-10 py-6 rounded-xl text-base glow-violet">
-              Enter the Portal
+          <a href={BOOKINGS_URL} target="_blank" rel="noopener noreferrer">
+            <Button
+              className="px-10 py-6 rounded-xl text-base font-medium"
+              style={{ background: "#d4af37", color: "#0a0118" }}
+            >
+              Book a Session with Violet
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-          </Link>
+          </a>
         </motion.div>
       </section>
     </div>

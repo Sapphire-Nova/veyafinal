@@ -39,13 +39,13 @@ export default function TarotCardFlip({ card, onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-[#0a0118] border border-[#7c3aed]/20 rounded-2xl p-6 md:p-8"
+        className="max-w-2xl w-full max-h-[85vh] overflow-y-auto bg-[#0a0118] border border-[#7c3aed]/20 rounded-2xl p-6 relative"
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 hover:bg-[#7c3aed]/20 rounded-lg transition-colors z-10"
+          className="absolute top-3 right-3 p-1.5 hover:bg-[#7c3aed]/30 rounded-lg transition-colors z-50 text-[#d4af37] hover:text-[#f5e6a3]"
         >
-          <X className="w-5 h-5 text-[#c4b5fd]" />
+          <X className="w-6 h-6" />
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

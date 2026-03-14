@@ -48,11 +48,15 @@
  * The mainPage value must match a key in the PAGES object exactly.
  */
 import Home from './pages/Home';
+import FullMoonCircles from './pages/FullMoonCircles';
+import IntentionBuilder from './pages/IntentionBuilder';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "Home": Home,
+    "FullMoonCircles": FullMoonCircles,
+    "IntentionBuilder": IntentionBuilder,
 }
 
 export const pagesConfig = {

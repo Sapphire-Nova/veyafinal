@@ -11,7 +11,7 @@ export const chakras = [
     element: "Earth",
     frequency: "396 Hz",
     mantra: "LAM",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/94cce4e8b_Gemini_Generated_Image_x8sgvux8sgvux8sg.png",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/42e72d3d0_Gemini_Generated_Image_x8sgvux8sgvux8sg.png",
     affirmation: "I am safe, grounded, and secure in this world.",
     balanced: "Feeling grounded, secure, stable, and physically healthy. Strong connection to body and earth.",
     blocks: [
@@ -60,7 +60,7 @@ export const chakras = [
     element: "Water",
     frequency: "417 Hz",
     mantra: "VAM",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/3a76c9f80_Gemini_Generated_Image_tawzddtawzddtawz.png",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/fccdeae95_Gemini_Generated_Image_tawzddtawzddtawz.png",
     affirmation: "I embrace pleasure, creativity, and the flow of life.",
     balanced: "Creative, passionate, emotionally healthy, comfortable with intimacy, joyful expression.",
     blocks: [
@@ -109,7 +109,7 @@ export const chakras = [
     element: "Fire",
     frequency: "528 Hz",
     mantra: "RAM",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/4d8a2c7e4_Gemini_Generated_Image_m3pg7am3pg7am3pg.png",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/8f82903f3_Gemini_Generated_Image_m3pg7am3pg7am3pg.png",
     affirmation: "I am powerful, confident, and in control of my destiny.",
     balanced: "Strong sense of self, confident, decisive, responsible, healthy willpower and personal authority.",
     blocks: [
@@ -158,7 +158,7 @@ export const chakras = [
     element: "Air",
     frequency: "639 Hz",
     mantra: "YAM",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/e2b81e0ed_Gemini_Generated_Image_lnporjlnporjlnpo.png",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/3a5ccbe63_Gemini_Generated_Image_lnporjlnporjlnpo.png",
     affirmation: "I give and receive love freely and unconditionally.",
     balanced: "Loving, compassionate, empathetic, forgiving, peaceful relationships, emotional resilience.",
     blocks: [
@@ -207,7 +207,7 @@ export const chakras = [
     element: "Ether",
     frequency: "741 Hz",
     mantra: "HAM",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/7abcb5060_Gemini_Generated_Image_vcasv5vcasv5vcas.png",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/8d36ab404_Gemini_Generated_Image_vcasv5vcasv5vcas1.png",
     affirmation: "I speak my truth with clarity, confidence, and compassion.",
     balanced: "Clear communication, authentic expression, good listening, living truthfully, creative voice.",
     blocks: [
@@ -256,7 +256,7 @@ export const chakras = [
     element: "Light",
     frequency: "852 Hz",
     mantra: "OM",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/27b5905b5_Gemini_Generated_Image_u56sgou56sgou56s.png",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/5428dcc9c_Gemini_Generated_Image_u56sgou56sgou56s.png",
     affirmation: "I trust my intuition and see the truth beyond illusion.",
     balanced: "Strong intuition, vivid imagination, clear thinking, spiritual awareness, insightful dreams.",
     blocks: [
@@ -305,7 +305,7 @@ export const chakras = [
     element: "Cosmic Energy",
     frequency: "963 Hz",
     mantra: "Silence / AUM",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/1d4a4a80c_Gemini_Generated_Image_wimudtwimudtwimu.png",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/dbe0ed407_Gemini_Generated_Image_wimudtwimudtwimu.png",
     affirmation: "I am connected to the divine source of all creation.",
     balanced: "Spiritual connection, inner peace, sense of purpose, universal love, wisdom, enlightenment.",
     blocks: [

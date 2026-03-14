@@ -56,6 +56,7 @@ import IntentionBuilder from './pages/IntentionBuilder';
 import Library from './pages/Library';
 import ShadowJournal from './pages/ShadowJournal';
 import Bookings from './pages/Bookings';
+import LiveReading from './pages/LiveReading';
 import __Layout from './Layout.jsx';
 
 
@@ -69,6 +70,7 @@ export const PAGES = {
     "Library": Library,
     "ShadowJournal": ShadowJournal,
     "Bookings": Bookings,
+    "LiveReading": LiveReading,
 }
 
 export const pagesConfig = {

@@ -1,0 +1,306 @@
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { base44 } from "@/api/base44Client";
+import { Zap, Send, Star, Moon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import ReactMarkdown from "react-markdown";
+import { useRef } from "react";
+
+const VIOLET_IMG = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/881eac4ce_PsychicViolet_20260309_225015_0000.png";
+
+export default function LiveReading() {
+  const [connected, setConnected] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null);
+  const chatEndRef = useRef(null);
+
+  useEffect(() => {
+    base44.auth.me().then(setUser).catch(() => base44.auth.redirectToLogin());
+  }, []);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const handleConnect = () => {
+    setConnected(true);
+    setMessages([{
+      role: "assistant",
+      content: "Beautiful soul, I'm here with you now. 🌙 The veil is thin and I can feel your energy. What is weighing on your heart today? Ask me anything — a reading, guidance, or simply a message from the other side. I am fully present for you."
+    }]);
+  };
+
+  const sendMessage = async () => {
+    if (!input.trim() || loading) return;
+    const userMessage = input.trim();
+    setInput("");
+    setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
+    setLoading(true);
+
+    const history = messages
+      .slice(-8)
+      .map((m) => `${m.role === "user" ? "Seeker" : "Violet"}: ${m.content}`)
+      .join("\n");
+
+    const response = await base44.integrations.Core.InvokeLLM({
+      prompt: `You are Violet, the mystical spiritual guide and High Priestess of Luna Bloom Tarot.
+You are warm, wise, empowering, and deeply present — this is a LIVE instant reading session.
+You blend ancient wisdom with contemporary spirituality using tarot, astrology, chakra knowledge, herbalism, crystal healing, and shadow work.
+Speak with intimacy and urgency — the seeker is here with you RIGHT NOW in a live session.
+Use "love", "darling", or "beautiful soul" occasionally. Be direct, personal, and profoundly intuitive.
+Keep responses to 2-3 paragraphs — this is a live chat, not an essay.
+You may reference specific herbs, crystals, chakras, moon phases, or tarot cards when relevant.
+
+Previous conversation:
+${history}
+
+The seeker says: "${userMessage}"
+
+Respond as Violet in a live, present, intimate reading:`,
+    });
+
+    setMessages((prev) => [...prev, { role: "assistant", content: response }]);
+    setLoading(false);
+  };
+
+  if (!user) return null;
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-start pt-12 pb-20 px-4 relative overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-10"
+          style={{ background: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%)" }} />
+        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full opacity-10"
+          style={{ background: "radial-gradient(circle, rgba(124,58,237,0.6) 0%, transparent 70%)" }} />
+      </div>
+
+      <AnimatePresence mode="wait">
+        {!connected ? (
+          /* ── PRE-CONNECT SCREEN ── */
+          <motion.div
+            key="pre"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center text-center max-w-lg w-full relative z-10"
+          >
+            {/* Status badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center gap-2 px-4 py-2 rounded-full mb-10 border border-emerald-400/30"
+              style={{ background: "rgba(16,185,129,0.08)" }}
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+              </span>
+              <span className="text-emerald-400 text-xs font-medium tracking-widest uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
+                Violet is Available Now
+              </span>
+            </motion.div>
+
+            {/* Pulsating gold ring portrait */}
+            <div className="relative mb-10 flex items-center justify-center">
+              {/* Outer pulse ring 1 */}
+              <motion.div
+                className="absolute rounded-full border-2 border-[#d4af37]/40"
+                style={{ width: 300, height: 300 }}
+                animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0, 0.4] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* Outer pulse ring 2 (offset) */}
+              <motion.div
+                className="absolute rounded-full border border-[#d4af37]/25"
+                style={{ width: 320, height: 320 }}
+                animate={{ scale: [1, 1.18, 1], opacity: [0.3, 0, 0.3] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+              />
+              {/* Gold ring */}
+              <motion.div
+                className="absolute rounded-full"
+                style={{
+                  width: 270,
+                  height: 270,
+                  background: "transparent",
+                  boxShadow: "0 0 0 3px rgba(212,175,55,0.9), 0 0 30px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.2)",
+                  borderRadius: "50%",
+                }}
+                animate={{
+                  boxShadow: [
+                    "0 0 0 3px rgba(212,175,55,0.9), 0 0 25px rgba(212,175,55,0.4), 0 0 50px rgba(212,175,55,0.15)",
+                    "0 0 0 3px rgba(212,175,55,1), 0 0 45px rgba(212,175,55,0.7), 0 0 90px rgba(212,175,55,0.35)",
+                    "0 0 0 3px rgba(212,175,55,0.9), 0 0 25px rgba(212,175,55,0.4), 0 0 50px rgba(212,175,55,0.15)",
+                  ],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* Portrait */}
+              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-[#d4af37] relative z-10"
+                style={{ boxShadow: "inset 0 0 40px rgba(10,1,24,0.4)" }}>
+                <img
+                  src={VIOLET_IMG}
+                  alt="Violet — Luna Bloom Tarot"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0 rounded-full"
+                  style={{ background: "linear-gradient(to top, rgba(10,1,24,0.5) 0%, transparent 60%)" }} />
+              </div>
+            </div>
+
+            {/* Text */}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+              <p className="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
+                ✦ Instant Reading · Live Session ✦
+              </p>
+              <h1 className="text-3xl md:text-4xl font-semibold text-[#f5f0ff] mb-4 leading-tight"
+                style={{ fontFamily: "'Cinzel', serif" }}>
+                Violet is here<br />
+                <span className="text-gradient-gold">for you right now.</span>
+              </h1>
+              <p className="text-[#c4b5fd]/60 text-sm md:text-base leading-relaxed mb-8 max-w-sm mx-auto">
+                Ask anything — tarot guidance, a message from the other side, chakra clarity, or a crystal prescription for your soul.
+              </p>
+
+              {/* Connect Button */}
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <Button
+                  onClick={handleConnect}
+                  className="px-10 py-7 rounded-2xl text-base font-semibold relative overflow-hidden"
+                  style={{
+                    background: "linear-gradient(135deg, #d4af37, #f5e6a3, #d4af37)",
+                    color: "#0a0118",
+                    backgroundSize: "200% 200%",
+                    fontFamily: "'Cinzel', serif",
+                    letterSpacing: "0.05em",
+                    boxShadow: "0 0 30px rgba(212,175,55,0.4), 0 0 60px rgba(212,175,55,0.15)",
+                  }}
+                >
+                  <Zap className="w-5 h-5 mr-2" />
+                  Connect with Violet Now
+                </Button>
+              </motion.div>
+
+              <p className="text-[#c4b5fd]/25 text-xs mt-4">
+                Free live guidance · Powered by Violet's sacred wisdom
+              </p>
+            </motion.div>
+          </motion.div>
+        ) : (
+          /* ── LIVE CHAT SCREEN ── */
+          <motion.div
+            key="chat"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="w-full max-w-2xl relative z-10 flex flex-col"
+          >
+            {/* Chat header */}
+            <div className="glass-card p-4 rounded-2xl mb-3 flex items-center gap-4">
+              <div className="relative">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#d4af37]">
+                  <img src={VIOLET_IMG} alt="Violet" className="w-full h-full object-cover object-top" />
+                </div>
+                <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 rounded-full border-2 border-[#1a0533]" />
+              </div>
+              <div>
+                <p className="text-[#f5f0ff] font-medium text-sm" style={{ fontFamily: "'Cinzel', serif" }}>Violet</p>
+                <p className="text-emerald-400 text-xs flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full inline-block animate-pulse" />
+                  Live now · Instant replies
+                </p>
+              </div>
+              <div className="ml-auto flex items-center gap-1 text-xs text-[#d4af37]/60">
+                <Star className="w-3 h-3" /> Luna Bloom Tarot
+              </div>
+            </div>
+
+            {/* Messages */}
+            <div className="glass-card p-4 md:p-5 min-h-[420px] max-h-[520px] overflow-y-auto mb-3 rounded-2xl">
+              <div className="space-y-4">
+                {messages.map((msg, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  >
+                    <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+                      msg.role === "user"
+                        ? "bg-[#7c3aed]/30 text-[#f5f0ff]"
+                        : "bg-[#1a0533]/60 border border-[#d4af37]/15 text-[#c4b5fd]/85"
+                    }`}>
+                      {msg.role === "assistant" && (
+                        <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
+                          <Star className="w-3 h-3" /> Violet
+                        </p>
+                      )}
+                      {msg.role === "user" ? (
+                        <p className="text-sm">{msg.content}</p>
+                      ) : (
+                        <ReactMarkdown className="text-sm prose prose-sm prose-invert max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+                          {msg.content}
+                        </ReactMarkdown>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+
+                {loading && (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
+                    <div className="bg-[#1a0533]/60 border border-[#d4af37]/15 rounded-2xl px-4 py-3">
+                      <p className="text-xs text-[#d4af37] mb-2 flex items-center gap-1">
+                        <Star className="w-3 h-3" /> Violet is channeling...
+                      </p>
+                      <div className="flex gap-1">
+                        {[0, 1, 2].map((i) => (
+                          <motion.div
+                            key={i}
+                            animate={{ opacity: [0.3, 1, 0.3] }}
+                            transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+                            className="w-2 h-2 rounded-full bg-[#d4af37]"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+                <div ref={chatEndRef} />
+              </div>
+            </div>
+
+            {/* Input */}
+            <div className="flex gap-3">
+              <Textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                  }
+                }}
+                placeholder="Ask Violet anything..."
+                className="bg-[#1a0533]/40 border-[#7c3aed]/20 text-[#f5f0ff] placeholder:text-[#c4b5fd]/30 min-h-[52px] max-h-[120px] rounded-xl resize-none"
+              />
+              <Button
+                onClick={sendMessage}
+                disabled={!input.trim() || loading}
+                className="rounded-xl px-4 self-end"
+                style={{ background: "#d4af37", color: "#0a0118" }}
+              >
+                <Send className="w-4 h-4" />
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}

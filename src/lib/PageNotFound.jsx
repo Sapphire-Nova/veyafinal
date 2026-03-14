@@ -115,5 +115,5 @@ const CARD_FILENAME_MAP = {
 
 export function getCardImageUrl(cardCode) {
   const filename = CARD_FILENAME_MAP[cardCode];
-  return filename ? TAROT_BASE_URL + filename : TAROT_BASE_URL + "00-TheFool.jpg";
+  return filename ? TAROT_BASE_URL + filename : TAROT_BASE_URL + "01-TheFool.jpg";
 }

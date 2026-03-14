@@ -109,6 +109,7 @@ export const chakras = [
     element: "Fire",
     frequency: "528 Hz",
     mantra: "RAM",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69b4c0060553de697bc30fd6/4d8a2c7e4_Gemini_Generated_Image_m3pg7am3pg7am3pg.png",
     affirmation: "I am powerful, confident, and in control of my destiny.",
     balanced: "Strong sense of self, confident, decisive, responsible, healthy willpower and personal authority.",
     blocks: [
